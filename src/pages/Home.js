@@ -35,9 +35,13 @@ const Description = styled(motion.p)`
 
 const SkillsSection = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
   margin-top: 4rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const SkillCard = styled(motion.div)`
@@ -45,6 +49,11 @@ const SkillCard = styled(motion.div)`
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  
+  &:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
 `;
 
 const SkillTitle = styled.h3`
@@ -63,53 +72,6 @@ const SkillItem = styled.li`
   margin-bottom: 0.5rem;
 `;
 
-const ProjectsGrid = styled(motion.div)`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-`;
-
-const ProjectDetailContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-`;
-
-const ProjectContent = styled.div`
-  background: white;
-  padding: 3rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-`;
-
-const Card = styled(motion.div)`
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-`;
-
-const CardTitle = styled.h3`
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 1rem;
-`;
-
-const CardDescription = styled.p`
-  color: #666;
-  line-height: 1.6;
-`;
-
 const Home = ({ onNavigateToProjects, onNavigateToProjectDetail }) => {
   const handleCardClick = (cardType) => {
     switch(cardType) {
@@ -117,9 +79,8 @@ const Home = ({ onNavigateToProjects, onNavigateToProjectDetail }) => {
         onNavigateToProjects();
         break;
       case 'product':
-        onNavigateToProjectDetail(6); // Product Management Frameworks 프로젝트로 이동
+        onNavigateToProjectDetail(6);
         break;
-      // 다른 카드들에 대한 처리도 추가 가능
       default:
         break;
     }
@@ -149,6 +110,7 @@ const Home = ({ onNavigateToProjects, onNavigateToProjectDetail }) => {
         <SkillCard
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
+          onClick={() => handleCardClick('ai')}
         >
           <SkillTitle>AI & Data Projects</SkillTitle>
           <SkillList>
@@ -164,6 +126,7 @@ const Home = ({ onNavigateToProjects, onNavigateToProjectDetail }) => {
         <SkillCard
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
+          onClick={() => handleCardClick('product')}
         >
           <SkillTitle>Product Management Frameworks</SkillTitle>
           <SkillList>
@@ -175,32 +138,6 @@ const Home = ({ onNavigateToProjects, onNavigateToProjectDetail }) => {
           </SkillList>
         </SkillCard>
       </SkillsSection>
-
-      <ProjectsGrid>
-        <Card 
-          whileHover={{ scale: 1.03 }} 
-          transition={{ type: "spring", stiffness: 300 }}
-          onClick={() => handleCardClick('ai')}
-        >
-          <CardTitle>AI & Data Projects</CardTitle>
-          <CardDescription>
-            // ... your description ...
-          </CardDescription>
-        </Card>
-
-        <Card 
-          whileHover={{ scale: 1.03 }} 
-          transition={{ type: "spring", stiffness: 300 }}
-          onClick={() => handleCardClick('product')}
-        >
-          <CardTitle>Product Management Frameworks</CardTitle>
-          <CardDescription>
-            // ... your description ...
-          </CardDescription>
-        </Card>
-
-        {/* Third card ... */}
-      </ProjectsGrid>
     </HomeContainer>
   );
 };
