@@ -40,6 +40,16 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedProjectId, setSelectedProjectId] = useState(null);
 
+  const navigateToProjects = () => {
+    setCurrentPage('projects');
+    setSelectedProjectId(null);
+  };
+
+  const navigateToProjectDetail = (id) => {
+    setCurrentPage('projects');
+    setSelectedProjectId(id);
+  };
+
   const renderContent = () => {
     if (selectedProjectId !== null) {
       return <ProjectDetail 
@@ -50,7 +60,10 @@ function App() {
 
     switch (currentPage) {
       case 'home':
-        return <Home />;
+        return <Home 
+          onNavigateToProjects={navigateToProjects}
+          onNavigateToProjectDetail={navigateToProjectDetail}
+        />;
       case 'projects':
         return <Projects onProjectClick={(id) => setSelectedProjectId(id)} />;
       case 'blog':

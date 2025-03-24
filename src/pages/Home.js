@@ -63,7 +63,68 @@ const SkillItem = styled.li`
   margin-bottom: 0.5rem;
 `;
 
-const Home = () => {
+const ProjectsGrid = styled(motion.div)`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`;
+
+const ProjectDetailContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+`;
+
+const ProjectContent = styled.div`
+  background: white;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+`;
+
+const Card = styled(motion.div)`
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+`;
+
+const CardTitle = styled.h3`
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+`;
+
+const CardDescription = styled.p`
+  color: #666;
+  line-height: 1.6;
+`;
+
+const Home = ({ onNavigateToProjects, onNavigateToProjectDetail }) => {
+  const handleCardClick = (cardType) => {
+    switch(cardType) {
+      case 'ai':
+        onNavigateToProjects();
+        break;
+      case 'product':
+        onNavigateToProjectDetail(6); // Product Management Frameworks 프로젝트로 이동
+        break;
+      // 다른 카드들에 대한 처리도 추가 가능
+      default:
+        break;
+    }
+  };
+
   return (
     <HomeContainer>
       <HeroSection
@@ -89,24 +150,12 @@ const Home = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <SkillTitle>Data Analysis</SkillTitle>
+          <SkillTitle>AI & Data Projects</SkillTitle>
           <SkillList>
-            <SkillItem>Data Engineering</SkillItem>
             <SkillItem>Data Visualization</SkillItem>
-            <SkillItem>Statistical Analysis</SkillItem>
             <SkillItem>Predictive Modeling</SkillItem>
             <SkillItem>Optimization & Simulation</SkillItem>
-          </SkillList>
-        </SkillCard>
-
-        <SkillCard
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        >
-          <SkillTitle>AI Project</SkillTitle>
-          <SkillList>
-            <SkillItem>Machine Learning</SkillItem>
-            <SkillItem>Deep Learning</SkillItem>
+            <SkillItem>Machine/Deep Learning</SkillItem>
             <SkillItem>Image Processing</SkillItem>
             <SkillItem>AI agent with LLM & RAG</SkillItem>
           </SkillList>
@@ -126,6 +175,32 @@ const Home = () => {
           </SkillList>
         </SkillCard>
       </SkillsSection>
+
+      <ProjectsGrid>
+        <Card 
+          whileHover={{ scale: 1.03 }} 
+          transition={{ type: "spring", stiffness: 300 }}
+          onClick={() => handleCardClick('ai')}
+        >
+          <CardTitle>AI & Data Projects</CardTitle>
+          <CardDescription>
+            // ... your description ...
+          </CardDescription>
+        </Card>
+
+        <Card 
+          whileHover={{ scale: 1.03 }} 
+          transition={{ type: "spring", stiffness: 300 }}
+          onClick={() => handleCardClick('product')}
+        >
+          <CardTitle>Product Management Frameworks</CardTitle>
+          <CardDescription>
+            // ... your description ...
+          </CardDescription>
+        </Card>
+
+        {/* Third card ... */}
+      </ProjectsGrid>
     </HomeContainer>
   );
 };
