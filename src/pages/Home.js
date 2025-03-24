@@ -72,11 +72,11 @@ const Home = () => {
         transition={{ duration: 0.8 }}
       >
         <Title>Leanna Jeon</Title>
-        <Subtitle>Data Analyst & Project Manager</Subtitle>
+        <Subtitle>Problem Solver with Data and AI</Subtitle>
         <Description>
-          Passionate about transforming data into actionable insights and leading projects
-          that make a difference. With a background in UX design and data analysis,
-          I bring a unique perspective to every project I undertake.
+          A quick learner with a proven ability to rapidly acquire new skills and deliver results
+          by understanding complex data, leveraging it to drive strategic decisions, and
+          proactively managing large datasets across various roles and industries.
         </Description>
       </HeroSection>
 
@@ -91,9 +91,11 @@ const Home = () => {
         >
           <SkillTitle>Data Analysis</SkillTitle>
           <SkillList>
+            <SkillItem>Data Engineering</SkillItem>
             <SkillItem>Data Visualization</SkillItem>
             <SkillItem>Statistical Analysis</SkillItem>
-            <SkillItem>SQL & Python</SkillItem>
+            <SkillItem>Predictive Modeling</SkillItem>
+            <SkillItem>Optimization & Simulation</SkillItem>
           </SkillList>
         </SkillCard>
 
@@ -101,23 +103,26 @@ const Home = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <SkillTitle>Project Management</SkillTitle>
+          <SkillTitle>AI Project</SkillTitle>
           <SkillList>
+            <SkillItem>Machine Learning</SkillItem>
+            <SkillItem>Deep Learning</SkillItem>
+            <SkillItem>Image Processing</SkillItem>
+            <SkillItem>AI agent with LLM & RAG</SkillItem>
+          </SkillList>
+        </SkillCard>
+
+        <SkillCard
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <SkillTitle>Product Management Frameworks</SkillTitle>
+          <SkillList>
+            <SkillItem>Product Design</SkillItem>
+            <SkillItem>Product User Research</SkillItem>
             <SkillItem>Agile Methodologies</SkillItem>
-            <SkillItem>Team Leadership</SkillItem>
-            <SkillItem>Risk Management</SkillItem>
-          </SkillList>
-        </SkillCard>
-
-        <SkillCard
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        >
-          <SkillTitle>UX Design</SkillTitle>
-          <SkillList>
-            <SkillItem>User Research</SkillItem>
-            <SkillItem>Wireframing</SkillItem>
-            <SkillItem>Prototyping</SkillItem>
+            <SkillItem>Scrum with Jira</SkillItem>
+            <SkillItem>Project Planning</SkillItem>
           </SkillList>
         </SkillCard>
       </SkillsSection>

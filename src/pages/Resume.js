@@ -111,11 +111,22 @@ const Resume = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <SectionTitle>Experience</SectionTitle>
+        <SectionTitle>Work Experience</SectionTitle>
         <ExperienceItem>
-          <ExperienceTitle>Senior Data Analyst</ExperienceTitle>
-          <ExperienceCompany>Tech Company</ExperienceCompany>
-          <ExperienceDate>2020 - Present</ExperienceDate>
+          <ExperienceTitle>Graduate Student Data Analyst</ExperienceTitle>
+          <ExperienceCompany>Retail Company</ExperienceCompany>
+          <ExperienceDate>May 2025 - Aug2025</ExperienceDate>
+          <ExperienceDescription>
+            <li>Led data analysis initiatives for product development</li>
+            <li>Developed automated reporting systems using Python</li>
+            <li>Collaborated with cross-functional teams to implement data-driven solutions</li>
+          </ExperienceDescription>
+        </ExperienceItem>
+
+        <ExperienceItem>
+          <ExperienceTitle>Graduate Student Data Analyst</ExperienceTitle>
+          <ExperienceCompany>Logistics Company</ExperienceCompany>
+          <ExperienceDate>Jan 2025 - Apr 2025</ExperienceDate>
           <ExperienceDescription>
             <li>Led data analysis initiatives for product development</li>
             <li>Developed automated reporting systems using Python</li>
@@ -124,13 +135,33 @@ const Resume = () => {
         </ExperienceItem>
         
         <ExperienceItem>
-          <ExperienceTitle>Project Manager</ExperienceTitle>
+          <ExperienceTitle>User Experience Strategist Freelancer</ExperienceTitle>
           <ExperienceCompany>Digital Agency</ExperienceCompany>
-          <ExperienceDate>2018 - 2020</ExperienceDate>
+          <ExperienceDate>Nov 2022 - Jun 2023</ExperienceDate>
           <ExperienceDescription>
-            <li>Managed multiple client projects simultaneously</li>
-            <li>Implemented agile methodologies for improved project delivery</li>
-            <li>Led team of 5 developers and designers</li>
+            <li>Strategized mobile gaming product, overseeing entire product lifecycle from concept to launch, identifying competitive features to release new products with a differentiated MVP and to augment user engagement</li>
+            <li>Obtained prospective users in e-book translation service by performing A/B testing wirh landing pages, resulting in 30% boost in reducing product development process</li>
+          </ExperienceDescription>
+        </ExperienceItem>
+
+        <ExperienceItem>
+          <ExperienceTitle>Product Design Intern</ExperienceTitle>
+          <ExperienceCompany>Naver Cloud (WORKSMOBILE)</ExperienceCompany>
+          <ExperienceDate>Dec 2022 - Feb 2023</ExperienceDate>
+          <ExperienceDescription>
+            <li>Conducted user research with 10 participants employing qualitative interview skills to inquire behavior context with chat service, uncovering key pain points in 'Home' feature; designed a card-based dashboard UX followed by A/B testing</li>
+            <li>Formulated information structure for 'My Own Chat Room' feature through leading user journey analysis, providing personalized data storage services to over 10,000 users in Asia, improving user retention</li>
+          </ExperienceDescription>
+        </ExperienceItem>
+
+        <ExperienceItem>
+          <ExperienceTitle>Product Design Intern</ExperienceTitle>
+          <ExperienceCompany>LG Uplus</ExperienceCompany>
+          <ExperienceDate>May 2022 - Dec 2022</ExperienceDate>
+          <ExperienceDescription>
+            <li>Spearheaded elevation of service usage for over 1 million users by engineering time-series data, visualizing customer behavior trends, and providing insights for pricing and marketing strategies with Python and SQL</li>
+            <li>Drove user engagement by 100% and revenue by 1.5%, analyzing marketing funnel data at each stage, executing segment analysis based on consumers' behavior and creating two digital contents with 30,000 views</li>
+            <li>Overhauled information architecture and navigation menus on web and mobile platforms, increasing digital channel usuage by 20%, and service sign-ups by 10%, while reducing negative customer feedback by 20%</li>
           </ExperienceDescription>
         </ExperienceItem>
       </Section>
@@ -145,10 +176,11 @@ const Resume = () => {
           <SkillCategory>
             <h4>Data Analysis</h4>
             <ul>
-              <li>Python</li>
-              <li>SQL</li>
+              <li>Python | SQL</li>
+              <li>Tableau | AWS | Azure</li>
               <li>Data Visualization</li>
               <li>Statistical Analysis</li>
+              <li>Machine Learning</li>
             </ul>
           </SkillCategory>
           
@@ -156,19 +188,20 @@ const Resume = () => {
             <h4>Project Management</h4>
             <ul>
               <li>Agile</li>
-              <li>Scrum</li>
-              <li>Risk Management</li>
+              <li>Scrum with Jira</li>
+              <li>Project Planning</li>
               <li>Team Leadership</li>
             </ul>
           </SkillCategory>
           
           <SkillCategory>
-            <h4>UX Design</h4>
+            <h4>Product Design</h4>
             <ul>
+              <li>Figma  |  Framer</li>
               <li>User Research</li>
               <li>Wireframing</li>
               <li>Prototyping</li>
-              <li>Usability Testing</li>
+              <li>Quality Assurance</li>
             </ul>
           </SkillCategory>
         </SkillsGrid>
@@ -181,10 +214,10 @@ const Resume = () => {
       >
         <SectionTitle>Contact</SectionTitle>
         <ContactInfo>
-          <p>📧 email@example.com</p>
-          <p>📱 +1 (123) 456-7890</p>
-          <p>📍 City, Country</p>
-          <p>🔗 linkedin.com/in/yourprofile</p>
+          <p>📧 jeon139@purdue.edu</p>
+          <p>📱 (765) 426-2966</p>
+          <p>📍 West Lafayette, IN</p>
+          <p>🔗 www.linkedin.com/in/leannajeon</p>
         </ContactInfo>
       </Section>
     </ResumeContainer>

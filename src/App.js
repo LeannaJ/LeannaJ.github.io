@@ -1,11 +1,12 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
-import Resume from './pages/Resume';
+import ProjectDetail from './pages/ProjectDetail';
 import Blog from './pages/Blog';
+import Resume from './pages/Resume';
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -14,16 +15,18 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-    <AppContainer>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/resume" element={<Resume />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </AppContainer>
+    <Router>
+      <AppContainer>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/project/:id" element={<ProjectDetail />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/resume" element={<Resume />} />
+        </Routes>
+      </AppContainer>
+    </Router>
   );
 }
 

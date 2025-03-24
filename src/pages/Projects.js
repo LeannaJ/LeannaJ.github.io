@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const ProjectsContainer = styled.div`
   max-width: 1200px;
@@ -68,32 +69,60 @@ const Tag = styled.span`
 `;
 
 const Projects = () => {
+  const navigate = useNavigate();
+  
   const projects = [
     {
       id: 1,
-      title: "Data Analysis Dashboard",
+      title: "Balancing Trailer Pool Network",
       description: "Interactive dashboard for business analytics using Python and React",
       image: "https://via.placeholder.com/400x200",
-      tags: ["Python", "React", "Data Visualization"],
+      tags: ["Python", "Streamlit", "folium", "Data Visualization", "Optimization"],
       github: "https://github.com/yourusername/project1"
     },
     {
       id: 2,
-      title: "UX Research Project",
-      description: "Comprehensive user research and redesign of a mobile application",
+      title: "AI Agent of Automated Data Analysis",
+      description: "Data analysis automation with LLM and RAG",
       image: "https://via.placeholder.com/400x200",
-      tags: ["UX Research", "Prototyping", "User Testing"],
+      tags: ["Cursor", "Python", "Langchain", "LLM", "RAG", "Hugging Face"],
       github: "https://github.com/yourusername/project2"
     },
     {
       id: 3,
-      title: "Project Management Tool",
-      description: "Agile project management platform with real-time collaboration",
+      title: "ML Model for Image Processing",
+      description: "Image processing and object detection using CNN and transfer learning",
       image: "https://via.placeholder.com/400x200",
-      tags: ["React", "Node.js", "MongoDB"],
+      tags: ["Python", "CNN", "Keras", "TensorFlow", "Transfer Learning", "Image Processing", "Object Detection"],
       github: "https://github.com/yourusername/project3"
+    },
+    {
+      id: 4,
+      title: "ML Model for Prediction with Sports Data",
+      description: "Predictive modeling for bracket prediction in NCAA March Madness",
+      image: "https://via.placeholder.com/400x200",
+      tags: ["Python", "Tableau", "XGBoost", "Ensemble", "Prediction", "Data Visualization"],
+    },
+    {
+      id: 5,
+      title: "Data Dashboard for Business Analytics",
+      description: "Interactive dashboard for business analytics using Python and React",
+      image: "https://via.placeholder.com/400x200",
+      tags: ["Python", "React", "Data Visualization", "Streamlit", "Tableau", "SQL"],
+      github: "https://github.com/yourusername/project1"
+    },
+    {
+      id: 6,
+      title: "Product Management Framework",
+      description: "Product design and strategic work for a mobile application",
+      image: "https://via.placeholder.com/400x200",
+      tags: ["Figma", "Framer", "UX", "UI", "Wireframing", "Prototyping", "User Research", "Agile", "Jira"],
     }
   ];
+
+  const handleProjectClick = (projectId) => {
+    navigate(`/project/${projectId}`);
+  };
 
   return (
     <ProjectsContainer>
@@ -115,6 +144,7 @@ const Projects = () => {
             key={project.id}
             whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 300 }}
+            onClick={() => handleProjectClick(project.id)}
           >
             <ProjectImage style={{ backgroundImage: `url(${project.image})` }} />
             <ProjectContent>
