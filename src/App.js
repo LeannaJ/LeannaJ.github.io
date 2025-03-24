@@ -10,12 +10,13 @@ import Resume from './pages/Resume';
 
 const AppContainer = styled.div`
   min-height: 100vh;
-  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
 `;
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <AppContainer>
         <Navbar />
         <Routes>
