@@ -30,6 +30,7 @@ const ProjectTitle = styled(motion.h1)`
 `;
 
 const ProjectContent = styled.div`
+  width: 100%;
   background: white;
   padding: 2rem;
   border-radius: 10px;
