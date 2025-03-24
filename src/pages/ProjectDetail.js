@@ -2,10 +2,124 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+// 프로젝트 데이터를 컴포넌트 외부로 이동
+const projectsData = {
+  1: {
+    title: "Project 1",
+    description: "This is project 1's main description.",
+    image: "https://via.placeholder.com/400x200",
+    tags: ["React", "Node.js", "MongoDB"],
+    overview: "Detailed overview of project 1...",
+    challenges: [
+      "Challenge 1 description",
+      "Challenge 2 description",
+      "Challenge 3 description"
+    ],
+    solutions: [
+      "Solution 1 description",
+      "Solution 2 description",
+      "Solution 3 description"
+    ],
+    results: "The results and impact of project 1..."
+  },
+  2: {
+    title: "Project 2",
+    description: "This is project 2's main description.",
+    image: "https://via.placeholder.com/400x200",
+    tags: ["Python", "Data Analysis", "Machine Learning"],
+    overview: "Detailed overview of project 2...",
+    challenges: [
+      "Challenge 1 description",
+      "Challenge 2 description",
+      "Challenge 3 description"
+    ],
+    solutions: [
+      "Solution 1 description",
+      "Solution 2 description",
+      "Solution 3 description"
+    ],
+    results: "The results and impact of project 2..."
+  },
+  3: {
+    title: "Project 3",
+    description: "This is project 3's main description.",
+    image: "https://via.placeholder.com/400x200",
+    tags: ["UX Research", "Prototyping", "User Testing"],
+    overview: "Detailed overview of project 3...",
+    challenges: [
+      "Challenge 1 description",
+      "Challenge 2 description",
+      "Challenge 3 description"
+    ],
+    solutions: [
+      "Solution 1 description",
+      "Solution 2 description",
+      "Solution 3 description"
+    ],
+    results: "The results and impact of project 3..."
+  },
+  4: {
+    title: "Project 4",
+    description: "This is project 4's main description.",
+    image: "https://via.placeholder.com/400x200",
+    tags: ["React Native", "Mobile Development", "API Integration"],
+    overview: "Detailed overview of project 4...",
+    challenges: [
+      "Challenge 1 description",
+      "Challenge 2 description",
+      "Challenge 3 description"
+    ],
+    solutions: [
+      "Solution 1 description",
+      "Solution 2 description",
+      "Solution 3 description"
+    ],
+    results: "The results and impact of project 4..."
+  },
+  5: {
+    title: "Project 5",
+    description: "This is project 5's main description.",
+    image: "https://via.placeholder.com/400x200",
+    tags: ["AWS", "Cloud Architecture", "DevOps"],
+    overview: "Detailed overview of project 5...",
+    challenges: [
+      "Challenge 1 description",
+      "Challenge 2 description",
+      "Challenge 3 description"
+    ],
+    solutions: [
+      "Solution 1 description",
+      "Solution 2 description",
+      "Solution 3 description"
+    ],
+    results: "The results and impact of project 5..."
+  },
+  6: {
+    title: "Project 6",
+    description: "This is project 6's main description.",
+    image: "https://via.placeholder.com/400x200",
+    tags: ["AI", "Deep Learning", "Computer Vision"],
+    overview: "Detailed overview of project 6...",
+    challenges: [
+      "Challenge 1 description",
+      "Challenge 2 description",
+      "Challenge 3 description"
+    ],
+    solutions: [
+      "Solution 1 description",
+      "Solution 2 description",
+      "Solution 3 description"
+    ],
+    results: "The results and impact of project 6..."
+  }
+};
+
 const ProjectDetailContainer = styled.div`
   max-width: 1000px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 const BackButton = styled(motion.button)`
@@ -35,6 +149,7 @@ const ProjectContent = styled.div`
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 `;
 
 const ProjectImage = styled.div`
@@ -80,118 +195,6 @@ const Tag = styled.span`
 `;
 
 const ProjectDetail = ({ id, onBack }) => {
-  // 프로젝트 데이터 (실제로는 이 데이터를 별도의 파일이나 데이터베이스에서 관리하는 것이 좋습니다)
-  const projectsData = {
-    1: {
-      title: "Project 1",
-      description: "This is project 1's main description.",
-      image: "https://via.placeholder.com/400x200",
-      tags: ["React", "Node.js", "MongoDB"],
-      overview: "Detailed overview of project 1...",
-      challenges: [
-        "Challenge 1 description",
-        "Challenge 2 description",
-        "Challenge 3 description"
-      ],
-      solutions: [
-        "Solution 1 description",
-        "Solution 2 description",
-        "Solution 3 description"
-      ],
-      results: "The results and impact of project 1..."
-    },
-    2: {
-      title: "Project 2",
-      description: "This is project 2's main description.",
-      image: "https://via.placeholder.com/400x200",
-      tags: ["Python", "Data Analysis", "Machine Learning"],
-      overview: "Detailed overview of project 2...",
-      challenges: [
-        "Challenge 1 description",
-        "Challenge 2 description",
-        "Challenge 3 description"
-      ],
-      solutions: [
-        "Solution 1 description",
-        "Solution 2 description",
-        "Solution 3 description"
-      ],
-      results: "The results and impact of project 2..."
-    },
-    3: {
-      title: "Project 3",
-      description: "This is project 3's main description.",
-      image: "https://via.placeholder.com/400x200",
-      tags: ["UX Research", "Prototyping", "User Testing"],
-      overview: "Detailed overview of project 3...",
-      challenges: [
-        "Challenge 1 description",
-        "Challenge 2 description",
-        "Challenge 3 description"
-      ],
-      solutions: [
-        "Solution 1 description",
-        "Solution 2 description",
-        "Solution 3 description"
-      ],
-      results: "The results and impact of project 3..."
-    },
-    4: {
-      title: "Project 4",
-      description: "This is project 4's main description.",
-      image: "https://via.placeholder.com/400x200",
-      tags: ["React Native", "Mobile Development", "API Integration"],
-      overview: "Detailed overview of project 4...",
-      challenges: [
-        "Challenge 1 description",
-        "Challenge 2 description",
-        "Challenge 3 description"
-      ],
-      solutions: [
-        "Solution 1 description",
-        "Solution 2 description",
-        "Solution 3 description"
-      ],
-      results: "The results and impact of project 4..."
-    },
-    5: {
-      title: "Project 5",
-      description: "This is project 5's main description.",
-      image: "https://via.placeholder.com/400x200",
-      tags: ["AWS", "Cloud Architecture", "DevOps"],
-      overview: "Detailed overview of project 5...",
-      challenges: [
-        "Challenge 1 description",
-        "Challenge 2 description",
-        "Challenge 3 description"
-      ],
-      solutions: [
-        "Solution 1 description",
-        "Solution 2 description",
-        "Solution 3 description"
-      ],
-      results: "The results and impact of project 5..."
-    },
-    6: {
-      title: "Project 6",
-      description: "This is project 6's main description.",
-      image: "https://via.placeholder.com/400x200",
-      tags: ["AI", "Deep Learning", "Computer Vision"],
-      overview: "Detailed overview of project 6...",
-      challenges: [
-        "Challenge 1 description",
-        "Challenge 2 description",
-        "Challenge 3 description"
-      ],
-      solutions: [
-        "Solution 1 description",
-        "Solution 2 description",
-        "Solution 3 description"
-      ],
-      results: "The results and impact of project 6..."
-    }
-  };
-
   const project = projectsData[id];
 
   if (!project) {
