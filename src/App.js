@@ -16,7 +16,7 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-    <Router basename="/">
+    <Router>
       <AppContainer>
         <Navbar />
         <Routes>
