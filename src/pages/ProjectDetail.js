@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const ProjectDetailContainer = styled.div`
@@ -79,10 +78,7 @@ const Tag = styled.span`
   color: #666;
 `;
 
-const ProjectDetail = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-
+const ProjectDetail = ({ id, onBack }) => {
   // 프로젝트 데이터 (실제로는 이 데이터를 별도의 파일이나 데이터베이스에서 관리하는 것이 좋습니다)
   const projectsData = {
     1: {
@@ -204,7 +200,7 @@ const ProjectDetail = () => {
   return (
     <ProjectDetailContainer>
       <BackButton
-        onClick={() => navigate('/projects')}
+        onClick={onBack}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 
 const ProjectsContainer = styled.div`
   max-width: 1200px;
@@ -68,9 +67,7 @@ const Tag = styled.span`
   color: #666;
 `;
 
-const Projects = () => {
-  const navigate = useNavigate();
-  
+const Projects = ({ onProjectClick }) => {
   const projects = [
     {
       id: 1,
@@ -120,10 +117,6 @@ const Projects = () => {
     }
   ];
 
-  const handleProjectClick = (projectId) => {
-    navigate(`/project/${projectId}`);
-  };
-
   return (
     <ProjectsContainer>
       <PageTitle
@@ -144,7 +137,7 @@ const Projects = () => {
             key={project.id}
             whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 300 }}
-            onClick={() => handleProjectClick(project.id)}
+            onClick={() => onProjectClick(project.id)}
           >
             <ProjectImage style={{ backgroundImage: `url(${project.image})` }} />
             <ProjectContent>
