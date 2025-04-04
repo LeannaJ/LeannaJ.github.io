@@ -9,17 +9,39 @@ const ResumeContainer = styled.div`
 `;
 
 const DownloadButton = styled(motion.a)`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
   background: #333;
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 5px;
   text-decoration: none;
-  font-weight: 500;
-  margin-bottom: 2rem;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  z-index: 100;
+  
+  &:hover {
+    background: #444;
+  }
+`;
+
+const BottomDownloadButton = styled(motion.a)`
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  background: #333;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  z-index: 100;
   
   &:hover {
     background: #444;
@@ -141,8 +163,8 @@ const ContactInfo = styled.div`
 const Resume = () => {
   return (
     <ResumeContainer>
-      <DownloadButton 
-        href="/Resume_LeannaJeon.pdf" 
+      <DownloadButton
+        href="/Leanna_Seungmi_Jeon_Resume.pdf"
         download
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -152,6 +174,18 @@ const Resume = () => {
         </DownloadIcon>
         Download Resume
       </DownloadButton>
+
+      <BottomDownloadButton
+        href="/Leanna_Seungmi_Jeon_Resume.pdf"
+        download
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <DownloadIcon viewBox="0 0 24 24">
+          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+        </DownloadIcon>
+        Download Resume
+      </BottomDownloadButton>
 
       <Section
         initial={{ opacity: 0, y: 20 }}

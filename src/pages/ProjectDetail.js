@@ -29,7 +29,7 @@ const projectsData = {
   "2": {
     title: "ML Model for Image Processing",
     description: "Image processing and object detection using CNN and transfer learning",
-    image: "/images/Background_Image_Lemon.jpg",
+    image: "/images/Background_Image_Lemon.png",
     tags: ["Python", "CNN", "Keras", "TensorFlow", "Transfer Learning", "Image Processing", "Object Detection"],
     
     overview: "This project aimed to predict the popularity of pet profile images (Pawpularity Score) based on 9,912 images and structured metadata provided in a CSV file. To accomplish this, we conducted image preprocessing, extracted visual features using a pretrained CNN (ResNet-50), and integrated those with binary metadata features (e.g., focus, blur, accessories) to build a robust regression model.",
@@ -73,7 +73,7 @@ const projectsData = {
   "4": {
     title: "AI Agent of Automated Data Analysis",
     description: "Data analysis automation with LLM and RAG",
-    image: "/images/Background_Image_Lemon.jpg",
+    image: "/images/Background_Image_Lemon.png",
     tags: ["Cursor", "Python", "Langchain", "LLM", "RAG", "Hugging Face"],
     
     overview: "This project aims to augment the end-to-end workflow of a data analyst using AI and prompt engineering. Leveraging Cursor's AI agent capabilities, we designed a modular, prompt-driven framework that separates rule-based tasks from human judgment, enabling an efficient and human-centered approach to data analysis.",
