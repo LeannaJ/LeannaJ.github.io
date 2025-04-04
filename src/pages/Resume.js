@@ -6,10 +6,11 @@ const ResumeContainer = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   padding: 4rem 2rem;
+  position: relative;
 `;
 
 const DownloadButton = styled(motion.a)`
-  position: fixed;
+  position: absolute;
   right: 2rem;
   top: 2rem;
   background: #333;
@@ -29,7 +30,7 @@ const DownloadButton = styled(motion.a)`
 `;
 
 const BottomDownloadButton = styled(motion.a)`
-  position: fixed;
+  position: absolute;
   right: 2rem;
   bottom: 2rem;
   background: #333;
