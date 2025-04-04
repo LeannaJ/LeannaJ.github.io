@@ -8,6 +8,30 @@ const ResumeContainer = styled.div`
   padding: 4rem 2rem;
 `;
 
+const DownloadButton = styled(motion.a)`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #333;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  
+  &:hover {
+    background: #444;
+  }
+`;
+
+const DownloadIcon = styled.svg`
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+`;
+
 const Section = styled(motion.section)`
   background: white;
   padding: 2rem;
@@ -101,11 +125,34 @@ const ContactInfo = styled.div`
     color: #666;
     margin: 0;
   }
+
+  a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: #333;
+      text-decoration: underline;
+    }
+  }
 `;
 
 const Resume = () => {
   return (
     <ResumeContainer>
+      <DownloadButton 
+        href="/Resume_LeannaJeon.pdf" 
+        download
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <DownloadIcon viewBox="0 0 24 24">
+          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+        </DownloadIcon>
+        Download Resume
+      </DownloadButton>
+
       <Section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -114,18 +161,7 @@ const Resume = () => {
         <SectionTitle>Work Experience</SectionTitle>
         <ExperienceItem>
           <ExperienceTitle>Graduate Student Data Analyst</ExperienceTitle>
-          <ExperienceCompany>Retail Company</ExperienceCompany>
-          <ExperienceDate>May 2025 - Aug2025</ExperienceDate>
-          <ExperienceDescription>
-            <li>Led data analysis initiatives for product development</li>
-            <li>Developed automated reporting systems using Python</li>
-            <li>Collaborated with cross-functional teams to implement data-driven solutions</li>
-          </ExperienceDescription>
-        </ExperienceItem>
-
-        <ExperienceItem>
-          <ExperienceTitle>Graduate Student Data Analyst</ExperienceTitle>
-          <ExperienceCompany>Logistics Company</ExperienceCompany>
+          <ExperienceCompany>US Logistics Company</ExperienceCompany>
           <ExperienceDate>Jan 2025 - Apr 2025</ExperienceDate>
           <ExperienceDescription>
             <li>Led data analysis initiatives for product development</li>
@@ -136,7 +172,7 @@ const Resume = () => {
         
         <ExperienceItem>
           <ExperienceTitle>User Experience Strategist Freelancer</ExperienceTitle>
-          <ExperienceCompany>Digital Agency</ExperienceCompany>
+          <ExperienceCompany>WHITEBREW: Korean Digital Agency</ExperienceCompany>
           <ExperienceDate>Nov 2022 - Jun 2023</ExperienceDate>
           <ExperienceDescription>
             <li>Strategized mobile gaming product, overseeing entire product lifecycle from concept to launch, identifying competitive features to release new products with a differentiated MVP and to augment user engagement</li>
@@ -217,7 +253,9 @@ const Resume = () => {
           <p>📧 jeon139@purdue.edu</p>
           <p>📱 (765) 426-2966</p>
           <p>📍 West Lafayette, IN</p>
-          <p>🔗 www.linkedin.com/in/leannajeon</p>
+          <a href="https://www.linkedin.com/in/leannajeon" target="_blank" rel="noopener noreferrer">
+            🔗 www.linkedin.com/in/leannajeon
+          </a>
         </ContactInfo>
       </Section>
     </ResumeContainer>
