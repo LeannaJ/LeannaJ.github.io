@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
-import Blog from './pages/Blog';
 import Resume from './pages/Resume';
+// import Blog from './pages/Blog';  // Blog import 주석 처리
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -12,114 +14,106 @@ const AppContainer = styled.div`
   flex-direction: column;
 `;
 
-const Nav = styled.nav`
-  background: white;
+const Navigation = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
   padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
-const NavList = styled.ul`
-  list-style: none;
+const NavLinks = styled.div`
   display: flex;
   gap: 2rem;
-  margin: 0;
-  padding: 0;
 `;
 
-const NavItem = styled.li`
-  cursor: pointer;
+const NavLink = styled(motion.a)`
   color: #333;
-  font-weight: ${props => props.active ? 'bold' : 'normal'};
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
   
   &:hover {
     color: #666;
   }
 `;
 
-function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-  const [selectedProjectId, setSelectedProjectId] = useState(null);
+const MainContent = styled.div`
+  flex: 1;
+  padding: 2rem;
+`;
 
-  const navigateToProjects = () => {
-    setCurrentPage('projects');
-    setSelectedProjectId(null);
+const App = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const navigate = useNavigate();
+
+  const handleProjectClick = (projectId) => {
+    setSelectedProject(projectId);
+    navigate(`/projects/${projectId}`);
   };
 
-  const navigateToProjectDetail = (id) => {
-    setCurrentPage('projects');
-    setSelectedProjectId(id);
-  };
-
-  const renderContent = () => {
-    if (selectedProjectId !== null) {
-      return <ProjectDetail 
-        id={selectedProjectId} 
-        onBack={() => setSelectedProjectId(null)} 
-      />;
-    }
-
-    switch (currentPage) {
-      case 'home':
-        return <Home 
-          onNavigateToProjects={navigateToProjects}
-          onNavigateToProjectDetail={navigateToProjectDetail}
-        />;
-      case 'projects':
-        return <Projects onProjectClick={(id) => setSelectedProjectId(id)} />;
-      case 'blog':
-        return <Blog />;
-      case 'resume':
-        return <Resume />;
-      default:
-        return <Home />;
-    }
+  const handleBack = () => {
+    setSelectedProject(null);
+    navigate('/projects');
   };
 
   return (
-    <AppContainer>
-      <Nav>
-        <NavList>
-          <NavItem 
-            active={currentPage === 'home'} 
-            onClick={() => {
-              setCurrentPage('home');
-              setSelectedProjectId(null);
-            }}
-          >
-            Home
-          </NavItem>
-          <NavItem 
-            active={currentPage === 'projects'} 
-            onClick={() => {
-              setCurrentPage('projects');
-              setSelectedProjectId(null);
-            }}
+    <Router>
+      <Navigation>
+        <NavLink
+          onClick={() => navigate('/')}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Home
+        </NavLink>
+        <NavLinks>
+          <NavLink
+            onClick={() => navigate('/projects')}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Projects
-          </NavItem>
-          <NavItem 
-            active={currentPage === 'blog'} 
-            onClick={() => {
-              setCurrentPage('blog');
-              setSelectedProjectId(null);
-            }}
-          >
-            Blog
-          </NavItem>
-          <NavItem 
-            active={currentPage === 'resume'} 
-            onClick={() => {
-              setCurrentPage('resume');
-              setSelectedProjectId(null);
-            }}
+          </NavLink>
+          <NavLink
+            onClick={() => navigate('/resume')}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Resume
-          </NavItem>
-        </NavList>
-      </Nav>
-      {renderContent()}
-    </AppContainer>
+          </NavLink>
+          {/* Blog 링크 제거 */}
+        </NavLinks>
+      </Navigation>
+
+      <MainContent>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/projects"
+            element={<Projects onProjectClick={handleProjectClick} />}
+          />
+          <Route
+            path="/projects/:id"
+            element={
+              <ProjectDetail
+                projectId={selectedProject}
+                onBack={handleBack}
+              />
+            }
+          />
+          <Route path="/resume" element={<Resume />} />
+          {/* Blog 라우트 제거 */}
+        </Routes>
+      </MainContent>
+    </Router>
   );
-}
+};
 
 export default App; 

@@ -269,7 +269,8 @@ const DeliverableIcon = styled.span`
 `;
 
 const ProjectDetail = ({ projectId, onBack }) => {
-  const project = projectsData[projectId];
+  console.log('Project ID:', projectId); // 디버깅용 로그 추가
+  const project = projectsData[projectId.toString()];
   
   // 프로젝트별 실제 deliverables 정의
   const deliverables = {
