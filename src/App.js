@@ -49,7 +49,7 @@ const MainContent = styled.div`
   padding: 2rem;
 `;
 
-const App = () => {
+const AppContent = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const navigate = useNavigate();
 
@@ -64,7 +64,7 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <AppContainer>
       <Navigation>
         <NavLink
           onClick={() => navigate('/')}
@@ -112,6 +112,14 @@ const App = () => {
           {/* Blog 라우트 제거 */}
         </Routes>
       </MainContent>
+    </AppContainer>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 };
