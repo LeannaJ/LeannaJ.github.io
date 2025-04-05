@@ -34,7 +34,8 @@ const ProjectCard = styled(motion.div)`
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
+  cursor: ${props => props.clickable ? 'pointer' : 'default'};
+  opacity: ${props => props.clickable ? 1 : 0.8};
 `;
 
 const ProjectImage = styled.div`
@@ -102,7 +103,7 @@ const Projects = ({ onProjectClick }) => {
     },
     {
       id: 4,
-      title: "AI Agent of Automated Data Analysis",
+      title: "AI Agent of Automated Data Analysis(Ongoing)",
       description: "Data analysis automation with LLM and RAG",
       image: "/images/AI_fix.jpg",
       tags: ["Cursor", "Python", "Langchain", "LLM", "RAG", "Hugging Face"],
@@ -110,7 +111,7 @@ const Projects = ({ onProjectClick }) => {
     },
     {
       id: 5,
-      title: "Data Dashboard for Business Analytics",
+      title: "Data Dashboard for Business Analytics(Ongoing)",
       description: "Interactive dashboard for business analytics using Python and React",
       image: "/images/Dashboard1_fix.jpg",
       tags: ["Python", "React", "Data Visualization", "Streamlit", "Tableau", "SQL"],
@@ -118,12 +119,19 @@ const Projects = ({ onProjectClick }) => {
     },
     {
       id: 6,
-      title: "Product Management Framework",
+      title: "Product Management Framework(Ongoing)",
       description: "Product design and strategic work for a mobile application",
       image: "/images/App_UX_1_fix.jpg",
       tags: ["Figma", "Framer", "UX", "UI", "Wireframing", "Prototyping", "User Research", "Agile", "Jira"],
     }
   ];
+
+  const handleProjectClick = (project) => {
+    if (project.id === 5 || project.id === 6) {
+      return;
+    }
+    onProjectClick(project.id);
+  };
 
   return (
     <ProjectsContainer>
@@ -143,9 +151,10 @@ const Projects = ({ onProjectClick }) => {
         {projects.map((project) => (
           <ProjectCard
             key={project.id}
-            whileHover={{ scale: 1.03 }}
+            whileHover={project.id !== 5 && project.id !== 6 ? { scale: 1.03 } : {}}
             transition={{ type: "spring", stiffness: 300 }}
-            onClick={() => onProjectClick(project.id)}
+            onClick={() => handleProjectClick(project)}
+            clickable={project.id !== 5 && project.id !== 6}
           >
             <ProjectImage style={{ backgroundImage: `url(${project.image})` }} />
             <ProjectContent>

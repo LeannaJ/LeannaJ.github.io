@@ -45,7 +45,7 @@ const SkillsSection = styled(motion.div)`
 `;
 
 const SkillCard = styled(motion.div)`
-  background: #FFFECF;
+  background: white;
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

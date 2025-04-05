@@ -199,9 +199,9 @@ const Resume = () => {
           <ExperienceCompany>US Logistics Company</ExperienceCompany>
           <ExperienceDate>Jan 2025 - Apr 2025</ExperienceDate>
           <ExperienceDescription>
-            <li>Led data analysis initiatives for product development</li>
-            <li>Developed automated reporting systems using Python</li>
-            <li>Collaborated with cross-functional teams to implement data-driven solutions</li>
+            <li>Contributed to a 4-month client-facing analytics project, helping design a data-driven decision support framework for fleet distribution across U.S. cities</li>
+            <li>Designed interactive geospatial dashboards that helped visualize trailer distribution strategies and communicate logistics constraints to non-technical stakeholders</li>
+            <li>Collaborated with a cross-functional team to deliver optimization-based recommendations that improved alignment between demand signals and operational planning</li>
           </ExperienceDescription>
         </ExperienceItem>
         
@@ -216,7 +216,7 @@ const Resume = () => {
         </ExperienceItem>
 
         <ExperienceItem>
-          <ExperienceTitle>Product Design Intern</ExperienceTitle>
+          <ExperienceTitle>Product Management Intern</ExperienceTitle>
           <ExperienceCompany>Naver Cloud (WORKSMOBILE)</ExperienceCompany>
           <ExperienceDate>Dec 2022 - Feb 2023</ExperienceDate>
           <ExperienceDescription>
@@ -226,7 +226,7 @@ const Resume = () => {
         </ExperienceItem>
 
         <ExperienceItem>
-          <ExperienceTitle>Product Design Intern</ExperienceTitle>
+          <ExperienceTitle>Business Analytics & Product Management Intern</ExperienceTitle>
           <ExperienceCompany>LG Uplus</ExperienceCompany>
           <ExperienceDate>May 2022 - Dec 2022</ExperienceDate>
           <ExperienceDescription>
@@ -268,7 +268,7 @@ const Resume = () => {
           <SkillCategory>
             <h4>Product Design</h4>
             <ul>
-              <li>Figma  |  Framer</li>
+              <li>Figma  |  Framer AI</li>
               <li>User Research</li>
               <li>Wireframing</li>
               <li>Prototyping</li>

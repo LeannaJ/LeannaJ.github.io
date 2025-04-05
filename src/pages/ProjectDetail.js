@@ -6,25 +6,33 @@ import { motion } from 'framer-motion';
 const projectsData = {
   "1": {
     title: "Balancing Trailer Pool Network",
-    description: "Optimizing and visualizing trailer fleet allocation with Python and interactive web tools",
+    description: "Collaborative analytics project optimizing trailer distribution strategy for logistics efficiency",
     image: "/images/logistics_van.jpg",
-    tags: ["Python", "Streamlit", "folium", "Data Visualization", "Optimization"],
-    
-    overview: "This project addresses a common logistics challenge: how to efficiently allocate and relocate trailer assets across a national network in response to fluctuating demand. Poor allocation can lead to underutilized trailers in low-demand areas and shortages in high-demand regions—resulting in increased costs and reduced service levels.",
+    tags: ["Data Science", "Logistics Strategy", "Python", "Optimization", "folium", "ortools", "Data Visualization"],
   
+    overview: "Led a graduate-level consulting project addressing a key logistics challenge: how to balance trailer availability across a national network under fluctuating demand. Poor trailer positioning often results in high operational costs and low service levels—this project focused on solving that inefficiency using data-driven decision-making.",
+
     challenges: [
-      "Integrating multiple datasets including telematics data, demand signals (OTVI), and network locations.",
-      "Designing a rule-based system to initially allocate trailers based on demand proximity (e.g., 25-mile radius).",
-      "Optimizing trailer relocation using an integer programming model that minimizes total relocation distance."
+      "Understanding complex operational constraints across trailer locations and demand regions.",
+      "Translating ambiguous real-world logistics needs into an actionable analytical framework.",
+      "Ensuring data confidentiality while delivering impactful, interpretable results."
     ],
-  
+
     solutions: [
-      "Forecasted trailer demand using normalized OTVI index and proportionally assigned demand to top cities.",
-      "Developed a hierarchical allocation logic prioritizing dealer locations, then own locations, within set proximity.",
-      "Implemented Mixed Integer Linear Programming (MILP) using OR-Tools to optimize trailer-to-location assignments under business constraints."
+      "Designed a scalable trailer distribution framework incorporating demand signals and location types.",
+      "Collaborated with stakeholders to define business rules and capacity limits for trailer parking.",
+      "Developed decision-support tools that simulate multiple allocation strategies under various demand scenarios."
     ],
-  
-    results: "Developed a fully functional Python pipeline with an interactive Streamlit dashboard and Folium map. Delivered real-time visualization of trailer allocation and relocation strategies using synthetic data to ensure confidentiality. Enhanced usability with a QR code-enabled web demo featured at INFORMS."
+
+    results: "Delivered a comprehensive recommendation and demo toolset, including an interactive map and dashboard using synthetic data. Presented findings at INFORMS conference, highlighting both strategic insights and practical implementation potential for logistics stakeholders.",
+    
+    deliverables: [
+      "A poster presentation at INFORMS Analytics+ Conference 2025",
+      "A demonstrative map and dashboard with synthetic data",
+      "A comprehensive report detailing the analysis and recommendations.",
+      "An interactive dashboard for visualizing the trailer allocation strategy.",
+      "A presentation deck for stakeholders summarizing the findings and recommendations."
+    ]
   },
   "2": {
     title: "ML Model for Image Processing",
@@ -46,7 +54,12 @@ const projectsData = {
       "Applied image normalization, resizing, and tensor conversion for CNN input, then merged CNN feature vectors with metadata to train a non-linear regression model with XGBoost."
     ],
     
-    results: "Our best model achieved a Root Mean Squared Error (RMSE) of 18.75 on validation data. The project successfully reduced training time, improved generalization performance, and demonstrated how pretrained CNNs can be leveraged for high-dimensional feature extraction when data is limited."
+    results: "Our best model achieved a Root Mean Squared Error (RMSE) of 18.75 on validation data. The project successfully reduced training time, improved generalization performance, and demonstrated how pretrained CNNs can be leveraged for high-dimensional feature extraction when data is limited.",
+  
+    deliverables: [
+      "Github repository with code and data",
+      "A presentation deck for stakeholders summarizing the modeling process and the key findings."
+    ]
   },
   "3": {
     title: "ML Model for Prediction with Sports Data",
@@ -68,10 +81,16 @@ const projectsData = {
       "Tried various ensemble structures including soft/hard voting and stacking. Used both Randomized Search and Bayesian optimization with Optuna for robust hyperparameter tuning."
     ],
     
-    results: "Our final model was an XGBoost ensemble using hard voting and Optuna tuning, achieving an overall accuracy of 0.63085. We ranked 5th on Kaggle. The top features reflected a well-balanced contribution across geographical, team, and enrollment factors."
+    results: "Our final model was an XGBoost ensemble using hard voting and Optuna tuning, achieving an overall accuracy of 0.63085. We ranked 5th on Kaggle. The top features reflected a well-balanced contribution across geographical, team, and enrollment factors.",
+  
+    deliverables: [
+      "A Kaggle notebook with the final model and analysis",
+      "A interactive dashboard for visualizing the bracket prediction results",
+      "A presentation deck for stakeholders summarizing the modeling process and the key findings."
+    ]
   },
   "4": {
-    title: "AI Agent of Automated Data Analysis",
+    title: "AI Agent of Automated Data Analysis(Ongoing)",
     description: "Data analysis automation with LLM and RAG",
     image: "/images/AI_fix.jpg",
     tags: ["Cursor", "Python", "Langchain", "LLM", "RAG", "Hugging Face"],
@@ -90,10 +109,16 @@ const projectsData = {
       "Enabled human-in-the-loop interaction via chat for decisions like feature selection, transformation, and interpreting correlation results."
     ],
     
-    results: "This project is currently in progress. Initial tests with Cursor demonstrate effective collaboration between human and AI across the analysis pipeline. Future plans include integrating LangChain agents for more complex reasoning tasks, expanding prompt templates for diverse data types, and building evaluation metrics to assess AI-supported workflows in real scenarios."
+    results: "This project is currently in progress. Initial tests with Cursor demonstrate effective collaboration between human and AI across the analysis pipeline. Future plans include integrating LangChain agents for more complex reasoning tasks, expanding prompt templates for diverse data types, and building evaluation metrics to assess AI-supported workflows in real scenarios.",
+  
+    deliverables: [
+      "Github repository with code and data",
+      "Prompts for each step of the data analysis process",
+      "A presentation deck for stakeholders summarizing the modeling process and the key findings."
+    ]
   },
   "5": {
-    title: "Data Dashboard for Business Analytics",
+    title: "Data Dashboard for Business Analytics(Ongoing)",
     description: "Interactive dashboard for business analytics using Python and React",
     image: "/images/Dashboard1_fix.jpg",
     tags: ["Python", "React", "Data Visualization", "Streamlit", "Tableau", "SQL"],
@@ -115,7 +140,7 @@ const projectsData = {
     results: "The results and impact of project 5..."
   },
   "6": {
-    title: "Product Management Framework",
+    title: "Product Management Framework(Ongoing)",
     description: "Product design and strategic work for a mobile application",
     image: "/images/App_UX_1_fix.jpg",
     tags: ["Figma", "Framer", "UX", "UI", "Wireframing", "Prototyping", "User Research", "Agile", "Jira"],
@@ -218,8 +243,69 @@ const Tag = styled.span`
   color: #666;
 `;
 
-const ProjectDetail = ({ id, onBack }) => {
-  const project = projectsData[id];
+const DeliverablesList = styled.div`
+  margin-top: 2rem;
+`;
+
+const DeliverableItem = styled(motion.a)`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  background: #f5f5f5;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+  
+  &:hover {
+    background: #e0e0e0;
+  }
+`;
+
+const DeliverableIcon = styled.span`
+  font-size: 1.2rem;
+`;
+
+const ProjectDetail = ({ projectId, onBack }) => {
+  const project = projectsData[projectId];
+  
+  // 프로젝트별 실제 deliverables 정의
+  const deliverables = {
+    "1": [
+      { type: 'pdf', label: 'INFORMS Poster', url: '/Files/Final Poster.pdf' },
+      { type: 'html', label: 'Demo Map', url: '/Files/map_anonymized.html' }
+    ],
+    "2": [
+      { type: 'github', label: 'GitHub Repository', url: 'https://github.com/LeannaJ/image_processing' }
+    ],
+    "4": [
+      { type: 'github', label: 'GitHub Repository', url: 'https://github.com/LeannaJ/DA_Framework' },
+      { type: 'pdf', label: 'Project Presentation', url: '/Files/1_Workflow_Slides.pdf' }
+    ]
+  };
+
+  const getDeliverableIcon = (type) => {
+    switch(type) {
+      case 'github':
+        return '📂';
+      case 'pdf':
+        return '📄';
+      case 'html':
+        return '🌐';
+      default:
+        return '📎';
+    }
+  };
+
+  const handleDeliverableClick = (deliverable) => {
+    if (deliverable.type === 'github') {
+      window.open(deliverable.url, '_blank');
+    } else if (deliverable.type === 'pdf' || deliverable.type === 'html') {
+      window.open(deliverable.url, '_blank');
+    }
+  };
 
   if (!project) {
     return <div>Project not found</div>;
@@ -283,6 +369,25 @@ const ProjectDetail = ({ id, onBack }) => {
           <SectionTitle>Results</SectionTitle>
           <ProjectDescription>{project.results}</ProjectDescription>
         </ProjectSection>
+
+        {deliverables[projectId] && (
+          <DeliverablesList>
+            <SectionTitle>Deliverables</SectionTitle>
+            <div>
+              {deliverables[projectId].map((deliverable, index) => (
+                <DeliverableItem
+                  key={index}
+                  onClick={() => handleDeliverableClick(deliverable)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <DeliverableIcon>{getDeliverableIcon(deliverable.type)}</DeliverableIcon>
+                  {deliverable.label}
+                </DeliverableItem>
+              ))}
+            </div>
+          </DeliverablesList>
+        )}
       </ProjectContent>
     </ProjectDetailContainer>
   );
