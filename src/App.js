@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import Resume from './pages/Resume';
-// import Blog from './pages/Blog';  // Blog import 주석 처리
+import Blog from './pages/Blog';
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -82,13 +82,19 @@ const AppContent = () => {
             Projects
           </NavLink>
           <NavLink
+            onClick={() => navigate('/blog')}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Blog
+          </NavLink>
+          <NavLink
             onClick={() => navigate('/resume')}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Resume
           </NavLink>
-          {/* Blog 링크 제거 */}
         </NavLinks>
       </Navigation>
 
@@ -108,8 +114,8 @@ const AppContent = () => {
               />
             }
           />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/resume" element={<Resume />} />
-          {/* Blog 라우트 제거 */}
         </Routes>
       </MainContent>
     </AppContainer>
