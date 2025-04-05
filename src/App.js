@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Home from './pages/Home';
@@ -14,120 +13,114 @@ const AppContainer = styled.div`
   flex-direction: column;
 `;
 
-const Navigation = styled.nav`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.95);
+const Nav = styled.nav`
+  background: white;
   padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
-const NavLinks = styled.div`
+const NavList = styled.ul`
+  list-style: none;
   display: flex;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
 `;
 
-const NavLink = styled(motion.a)`
-  color: #333;
-  text-decoration: none;
-  font-weight: 500;
+const NavItem = styled.li`
   cursor: pointer;
+  color: #333;
+  font-weight: ${props => props.active ? 'bold' : 'normal'};
   
   &:hover {
     color: #666;
   }
 `;
 
-const MainContent = styled.div`
-  flex: 1;
-  padding: 2rem;
-`;
+function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
 
-const AppContent = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const navigate = useNavigate();
-
-  const handleProjectClick = (projectId) => {
-    setSelectedProject(projectId);
-    navigate(`/projects/${projectId}`);
+  const navigateToProjects = () => {
+    setCurrentPage('projects');
+    setSelectedProjectId(null);
   };
 
-  const handleBack = () => {
-    setSelectedProject(null);
-    navigate('/projects');
+  const navigateToProjectDetail = (id) => {
+    setCurrentPage('projects');
+    setSelectedProjectId(id);
   };
+
+  const renderContent = () => {
+    if (selectedProjectId !== null) {
+      return <ProjectDetail 
+        id={selectedProjectId} 
+        onBack={() => setSelectedProjectId(null)} 
+      />;
+    }
+
+    switch (currentPage) {
+      case 'home':
+        return <Home 
+          onNavigateToProjects={navigateToProjects}
+          onNavigateToProjectDetail={navigateToProjectDetail}
+        />;
+      case 'projects':
+        return <Projects onProjectClick={(id) => setSelectedProjectId(id)} />;
+      case 'blog':
+        return <Blog />;
+      case 'resume':
+        return <Resume />;
+      default:
+        return <Home />;
+    }
+  }
 
   return (
     <AppContainer>
-      <Navigation>
-        <NavLink
-          onClick={() => navigate('/')}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Home
-        </NavLink>
-        <NavLinks>
-          <NavLink
-            onClick={() => navigate('/projects')}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+      <Nav>
+        <NavList>
+          <NavItem 
+            active={currentPage === 'home'} 
+            onClick={() => {
+              setCurrentPage('home');
+              setSelectedProjectId(null);
+            }}
+          >
+            Home
+          </NavItem>
+          <NavItem 
+            active={currentPage === 'projects'} 
+            onClick={() => {
+              setCurrentPage('projects');
+              setSelectedProjectId(null);
+            }}
           >
             Projects
-          </NavLink>
-          <NavLink
-            onClick={() => navigate('/blog')}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          </NavItem>
+          <NavItem 
+            active={currentPage === 'blog'} 
+            onClick={() => {
+              setCurrentPage('blog');
+              setSelectedProjectId(null);
+            }}
           >
             Blog
-          </NavLink>
-          <NavLink
-            onClick={() => navigate('/resume')}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          </NavItem>
+          <NavItem 
+            active={currentPage === 'resume'} 
+            onClick={() => {
+              setCurrentPage('resume');
+              setSelectedProjectId(null);
+            }}
           >
             Resume
-          </NavLink>
-        </NavLinks>
-      </Navigation>
-
-      <MainContent>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/projects"
-            element={<Projects onProjectClick={handleProjectClick} />}
-          />
-          <Route
-            path="/projects/:id"
-            element={
-              <ProjectDetail
-                projectId={selectedProject}
-                onBack={handleBack}
-              />
-            }
-          />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/resume" element={<Resume />} />
-        </Routes>
-      </MainContent>
+          </NavItem>
+        </NavList>
+      </Nav>
+      {renderContent()}
     </AppContainer>
   );
-};
-
-const App = () => {
-  return (
-    <Router>
-      <AppContent />
-    </Router>
-  );
-};
+}
 
 export default App; 
