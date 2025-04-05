@@ -89,7 +89,7 @@ const Projects = ({ onProjectClick }) => {
       id: 2,
       title: "ML Model for Image Processing",
       description: "Image processing and object detection using CNN and transfer learning",
-      image: "/images/Background_Image_Lemon.png",
+      image: "/images/image_processing_g_fix.jpg",
       tags: ["Python", "CNN", "Keras", "TensorFlow", "Transfer Learning", "Image Processing", "Object Detection"],
       github: "https://github.com/yourusername/project3"
     },
@@ -104,7 +104,7 @@ const Projects = ({ onProjectClick }) => {
       id: 4,
       title: "AI Agent of Automated Data Analysis",
       description: "Data analysis automation with LLM and RAG",
-      image: "/images/Background_Image_Lemon.png",
+      image: "/images/AI_fix.jpg",
       tags: ["Cursor", "Python", "Langchain", "LLM", "RAG", "Hugging Face"],
       github: "https://github.com/yourusername/project2"
     },
@@ -112,7 +112,7 @@ const Projects = ({ onProjectClick }) => {
       id: 5,
       title: "Data Dashboard for Business Analytics",
       description: "Interactive dashboard for business analytics using Python and React",
-      image: "/images/Dashboard1.jpg",
+      image: "/images/Dashboard1_fix.jpg",
       tags: ["Python", "React", "Data Visualization", "Streamlit", "Tableau", "SQL"],
       github: "https://github.com/yourusername/project1"
     },
@@ -120,7 +120,7 @@ const Projects = ({ onProjectClick }) => {
       id: 6,
       title: "Product Management Framework",
       description: "Product design and strategic work for a mobile application",
-      image: "/images/App_UX_1.jpg",
+      image: "/images/App_UX_1_fix.jpg",
       tags: ["Figma", "Framer", "UX", "UI", "Wireframing", "Prototyping", "User Research", "Agile", "Jira"],
     }
   ];
