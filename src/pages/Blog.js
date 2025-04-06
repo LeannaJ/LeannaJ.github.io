@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { blogData } from '../data/blogData';
 
 const BlogContainer = styled.div`
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 4rem 2rem;
 `;
@@ -24,14 +24,17 @@ const BlogGrid = styled(motion.div)`
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
-const BlogCard = styled(motion.div)`
+const BlogCard = styled(motion.article)`
   background: white;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
 `;
 
 const BlogImage = styled.div`
@@ -46,36 +49,49 @@ const BlogContent = styled.div`
   padding: 1.5rem;
 `;
 
-const BlogTitle = styled.h3`
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 0.5rem;
-`;
-
-const BlogMeta = styled.div`
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-`;
-
-const BlogSummary = styled.p`
-  color: #666;
-  margin-bottom: 1rem;
-  line-height: 1.6;
-`;
-
-const TagsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-`;
-
-const Tag = styled.span`
+const BlogCategory = styled.span`
+  display: inline-block;
   background-color: #f0f0f0;
   padding: 0.25rem 0.75rem;
   border-radius: 15px;
   font-size: 0.875rem;
   color: #666;
+  margin-bottom: 1rem;
+`;
+
+const BlogTitle = styled.h2`
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+`;
+
+const BlogExcerpt = styled.p`
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+`;
+
+const BlogMeta = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #888;
+  font-size: 0.875rem;
+`;
+
+const ReadMore = styled(motion.button)`
+  background: none;
+  border: none;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.875rem;
+  
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const Blog = ({ onBlogPostClick }) => {
@@ -104,18 +120,22 @@ const Blog = ({ onBlogPostClick }) => {
             key={post.id}
             whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 300 }}
-            onClick={() => onBlogPostClick(post.id)}
           >
             <BlogImage style={{ backgroundImage: `url(${post.image})` }} />
             <BlogContent>
+              <BlogCategory>{post.tags[0]}</BlogCategory>
               <BlogTitle>{post.title}</BlogTitle>
-              <BlogMeta>{post.date} • {post.author}</BlogMeta>
-              <BlogSummary>{post.summary}</BlogSummary>
-              <TagsContainer>
-                {post.tags.map((tag, index) => (
-                  <Tag key={index}>{tag}</Tag>
-                ))}
-              </TagsContainer>
+              <BlogExcerpt>{post.summary}</BlogExcerpt>
+              <BlogMeta>
+                <span>{post.date} • {post.author}</span>
+                <ReadMore
+                  onClick={() => onBlogPostClick(post.id)}
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  Read More →
+                </ReadMore>
+              </BlogMeta>
             </BlogContent>
           </BlogCard>
         ))}
