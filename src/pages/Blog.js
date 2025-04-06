@@ -66,24 +66,25 @@ const BlogCategory = styled.span`
   margin-bottom: 1rem;
 `;
 
-const BlogTitle = styled.h2`
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-`;
-
-const BlogExcerpt = styled.p`
-  color: #666;
-  margin-bottom: 1rem;
-  line-height: 1.6;
-`;
-
 const BlogMeta = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+  color: #888;
+  font-size: 0.875rem;
+`;
+
+const BlogTitle = styled.h2`
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  color: #333;
+`;
+
+const BlogExcerpt = styled.p`
+  margin: 0 0 1rem 0;
+  color: #666;
+  line-height: 1.6;
 `;
 
 const BlogDate = styled.span`
@@ -134,20 +135,20 @@ const Blog = ({ onBlogPostClick }) => {
           <BlogCard
             key={post.id}
             disabled={post.id === 3}
-            onClick={() => post.id !== 3 && onBlogPostClick(post.id)}
+            onClick={() => !post.disabled && onBlogPostClick(post.id)}
             whileHover={{ scale: post.id === 3 ? 1 : 1.02 }}
             whileTap={{ scale: post.id === 3 ? 1 : 0.98 }}
           >
             <BlogImage style={{ backgroundImage: `url(${post.image})` }} />
             <BlogContent>
+              <BlogTitle>{post.title}</BlogTitle>
+              <BlogExcerpt>{post.excerpt}</BlogExcerpt>
               <BlogMeta>
                 <span>{post.date} • {post.author}</span>
                 <ReadMoreButton disabled={post.id === 3}>
                   Read More →
                 </ReadMoreButton>
               </BlogMeta>
-              <BlogTitle>{post.title}</BlogTitle>
-              <BlogExcerpt>{post.excerpt}</BlogExcerpt>
             </BlogContent>
           </BlogCard>
         ))}
