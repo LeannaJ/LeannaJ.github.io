@@ -244,15 +244,15 @@ const Resume = () => {
       >
         <SectionTitle>Education</SectionTitle>
         <ExperienceItem>
-          <ExperienceTitle>Master in Science in Business Analytics & Information Technology</ExperienceTitle>
+          <ExperienceTitle>Master of Science in Business Analytics & Information Technology</ExperienceTitle>
           <ExperienceCompany>Purdue University</ExperienceCompany>
           <ExperienceDate>2024 Aug - 2025 Aug</ExperienceDate>
         </ExperienceItem>
 
         <ExperienceItem>
-          <ExperienceTitle>Bachelor in Business Administration</ExperienceTitle>
+          <ExperienceTitle>Bachelor of Business Administration</ExperienceTitle>
           <ExperienceCompany>Sogang University</ExperienceCompany>
-          <ExperienceDate>2015 - 2022</ExperienceDate>
+          <ExperienceDate>2015 Feb - 2022 Aug</ExperienceDate>
         </ExperienceItem>
       </Section>
 

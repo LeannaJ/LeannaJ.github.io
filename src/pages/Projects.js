@@ -53,6 +53,9 @@ const ProjectImage = styled.div`
 
 const ProjectContent = styled.div`
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
 const ProjectTitle = styled.h3`
@@ -71,6 +74,7 @@ const ProjectTags = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
 const Tag = styled.span`
@@ -91,8 +95,8 @@ const ProjectMeta = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.875rem;
-  color: #666;
+  margin-top: auto;
+  padding-top: 1rem;
 `;
 
 const ReadMoreButton = styled.button`
