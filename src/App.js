@@ -47,6 +47,7 @@ function App() {
   };
 
   const navigateToProjectDetail = (id) => {
+    console.log('Navigating to project detail with ID:', id);
     setCurrentPage('projects');
     setSelectedProjectId(id);
   };

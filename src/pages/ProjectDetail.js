@@ -268,9 +268,9 @@ const DeliverableIcon = styled.span`
   font-size: 1.2rem;
 `;
 
-const ProjectDetail = ({ projectId, onBack }) => {
-  console.log('Project ID:', projectId); // 디버깅용 로그 추가
-  const project = projectsData[projectId.toString()];
+const ProjectDetail = ({ id, onBack }) => {
+  console.log('Project ID:', id); // 디버깅용 로그 추가
+  const project = projectsData[id.toString()];
   
   // 프로젝트별 실제 deliverables 정의
   const deliverables = {
@@ -371,11 +371,11 @@ const ProjectDetail = ({ projectId, onBack }) => {
           <ProjectDescription>{project.results}</ProjectDescription>
         </ProjectSection>
 
-        {deliverables[projectId] && (
+        {deliverables[id] && (
           <DeliverablesList>
             <SectionTitle>Deliverables</SectionTitle>
             <div>
-              {deliverables[projectId].map((deliverable, index) => (
+              {deliverables[id].map((deliverable, index) => (
                 <DeliverableItem
                   key={index}
                   onClick={() => handleDeliverableClick(deliverable)}
