@@ -1,13 +1,13 @@
 export const blogData = {
   "1": {
-    title: "Data Science Project Workflow",
-    date: "2024-03-20",
+    title: "What is Design Thinking?",
+    date: "2025-03-31",
     author: "Leanna J",
     image: "/images/blog/data-science-workflow.jpg",
-    summary: "A comprehensive guide to managing data science projects from start to finish.",
+    summary: "My background in product design taught me to think with care, clarity, and curiosity—habits that became a lifelong mindset. ",
     content: `
-      <h2>Data Science Project Workflow</h2>
-      <p>In this post, I'll share my experience and best practices for managing data science projects effectively.</p>
+      <h2>Design Thinking is ...</h2>
+      <p>My background in product design taught me to think with care, clarity, and curiosity—habits that became a lifelong mindset. I value precision, user behavior, and aesthetic integrity in every solution I build.</p>
 
       <h2>1. Project Planning</h2>
       <ul>
@@ -43,8 +43,8 @@ export const blogData = {
     tags: ["Data Science", "Project Management", "Best Practices"]
   },
   "2": {
-    title: "Machine Learning in Production",
-    date: "2024-03-15",
+    title: "(Will be Updated Soon)",
+    date: "2025-04-10",
     author: "Leanna J",
     image: "/images/blog/ml-production.jpg",
     summary: "Key considerations when deploying machine learning models to production.",

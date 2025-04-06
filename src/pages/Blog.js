@@ -35,6 +35,13 @@ const BlogCard = styled(motion.article)`
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  opacity: ${props => props.disabled ? 0.7 : 1};
+  
+  &:hover {
+    transform: ${props => props.disabled ? 'none' : 'translateY(-5px)'};
+    box-shadow: ${props => props.disabled ? '0 4px 6px rgba(0, 0, 0, 0.1)' : '0 6px 12px rgba(0, 0, 0, 0.15)'};
+  }
 `;
 
 const BlogImage = styled.div`
@@ -80,17 +87,41 @@ const BlogMeta = styled.div`
   font-size: 0.875rem;
 `;
 
-const ReadMore = styled(motion.button)`
+const BlogDate = styled.span`
+  font-size: 0.875rem;
+`;
+
+const BlogAuthor = styled.span`
+  font-size: 0.875rem;
+`;
+
+const ReadMoreButton = styled.button`
   background: none;
   border: none;
-  color: #333;
-  font-weight: 500;
-  cursor: pointer;
+  color: #007bff;
+  font-size: 0.9rem;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  opacity: ${props => props.disabled ? 0.5 : 1};
   padding: 0;
-  font-size: 0.875rem;
+  margin-top: 1rem;
+  position: relative;
   
-  &:hover {
-    text-decoration: underline;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #007bff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover:after {
+    transform: ${props => props.disabled ? 'none' : 'scaleX(1)'};
+    transform-origin: left;
   }
 `;
 
@@ -118,24 +149,22 @@ const Blog = ({ onBlogPostClick }) => {
         {posts.map((post) => (
           <BlogCard
             key={post.id}
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            disabled={post.id === 3}
+            onClick={() => !post.disabled && onBlogPostClick(post.id)}
+            whileHover={{ scale: post.id === 3 ? 1 : 1.02 }}
+            whileTap={{ scale: post.id === 3 ? 1 : 0.98 }}
           >
             <BlogImage style={{ backgroundImage: `url(${post.image})` }} />
             <BlogContent>
-              <BlogCategory>{post.tags[0]}</BlogCategory>
+              <BlogMeta>
+                <BlogDate>{post.date}</BlogDate>
+                <BlogAuthor>{post.author}</BlogAuthor>
+              </BlogMeta>
               <BlogTitle>{post.title}</BlogTitle>
               <BlogExcerpt>{post.summary}</BlogExcerpt>
-              <BlogMeta>
-                <span>{post.date} • {post.author}</span>
-                <ReadMore
-                  onClick={() => onBlogPostClick(post.id)}
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  Read More →
-                </ReadMore>
-              </BlogMeta>
+              <ReadMoreButton disabled={post.id === 3}>
+                Read More
+              </ReadMoreButton>
             </BlogContent>
           </BlogCard>
         ))}

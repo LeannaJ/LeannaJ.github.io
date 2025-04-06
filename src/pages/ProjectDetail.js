@@ -282,7 +282,7 @@ const ProjectDetail = ({ id, onBack }) => {
       { type: 'github', label: 'GitHub Repository', url: 'https://github.com/LeannaJ/image_processing' }
     ],
     "3": [
-      { type: 'text', label: 'Project Summary', content: "Due to confidentiality, only a high-level summary is presented here. I'm happy to share more about my approach and contribution upon request." }
+      { type: 'text', label: 'Project Summary', content: "Due to confidentiality, only a high-level summary is presented here.\n\nI'm happy to share more about my approach and contribution upon request." }
     ],
     "4": [
       { type: 'github', label: 'GitHub Repository', url: 'https://github.com/LeannaJ/DA_Framework' },
