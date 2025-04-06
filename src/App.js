@@ -6,6 +6,7 @@ import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import Resume from './pages/Resume';
 import Blog from './pages/Blog';
+import BlogDetail from './pages/BlogDetail';
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -40,16 +41,24 @@ const NavItem = styled.li`
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedProjectId, setSelectedProjectId] = useState(null);
+  const [selectedBlogId, setSelectedBlogId] = useState(null);
 
   const navigateToProjects = () => {
     setCurrentPage('projects');
     setSelectedProjectId(null);
+    setSelectedBlogId(null);
   };
 
   const navigateToProjectDetail = (id) => {
-    console.log('Navigating to project detail with ID:', id);
     setCurrentPage('projects');
     setSelectedProjectId(id);
+    setSelectedBlogId(null);
+  };
+
+  const navigateToBlogPost = (id) => {
+    setCurrentPage('blog');
+    setSelectedBlogId(id);
+    setSelectedProjectId(null);
   };
 
   const renderContent = () => {
@@ -57,6 +66,13 @@ function App() {
       return <ProjectDetail 
         id={selectedProjectId} 
         onBack={() => setSelectedProjectId(null)} 
+      />;
+    }
+
+    if (selectedBlogId !== null) {
+      return <BlogDetail 
+        id={selectedBlogId} 
+        onBack={() => setSelectedBlogId(null)} 
       />;
     }
 
@@ -69,7 +85,7 @@ function App() {
       case 'projects':
         return <Projects onProjectClick={(id) => setSelectedProjectId(id)} />;
       case 'blog':
-        return <Blog />;
+        return <Blog onBlogPostClick={(id) => setSelectedBlogId(id)} />;
       case 'resume':
         return <Resume />;
       default:
@@ -86,6 +102,7 @@ function App() {
             onClick={() => {
               setCurrentPage('home');
               setSelectedProjectId(null);
+              setSelectedBlogId(null);
             }}
           >
             Home
@@ -95,6 +112,7 @@ function App() {
             onClick={() => {
               setCurrentPage('projects');
               setSelectedProjectId(null);
+              setSelectedBlogId(null);
             }}
           >
             Projects
@@ -104,6 +122,7 @@ function App() {
             onClick={() => {
               setCurrentPage('blog');
               setSelectedProjectId(null);
+              setSelectedBlogId(null);
             }}
           >
             Blog
@@ -113,6 +132,7 @@ function App() {
             onClick={() => {
               setCurrentPage('resume');
               setSelectedProjectId(null);
+              setSelectedBlogId(null);
             }}
           >
             Resume

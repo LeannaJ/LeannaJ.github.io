@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { blogData } from '../data/blogData';
 
 const BlogContainer = styled.div`
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 4rem 2rem;
 `;
@@ -23,17 +24,14 @@ const BlogGrid = styled(motion.div)`
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
 `;
 
-const BlogCard = styled(motion.article)`
+const BlogCard = styled(motion.div)`
   background: white;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 `;
 
 const BlogImage = styled.div`
@@ -48,81 +46,43 @@ const BlogContent = styled.div`
   padding: 1.5rem;
 `;
 
-const BlogCategory = styled.span`
-  display: inline-block;
-  background-color: #f0f0f0;
-  padding: 0.25rem 0.75rem;
-  border-radius: 15px;
-  font-size: 0.875rem;
-  color: #666;
-  margin-bottom: 1rem;
-`;
-
-const BlogTitle = styled.h2`
+const BlogTitle = styled.h3`
   font-size: 1.5rem;
   color: #333;
-  margin-bottom: 1rem;
-  line-height: 1.4;
+  margin-bottom: 0.5rem;
 `;
 
-const BlogExcerpt = styled.p`
+const BlogMeta = styled.div`
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+`;
+
+const BlogSummary = styled.p`
   color: #666;
   margin-bottom: 1rem;
   line-height: 1.6;
 `;
 
-const BlogMeta = styled.div`
+const TagsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #888;
-  font-size: 0.875rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 `;
 
-const ReadMore = styled(motion.button)`
-  background: none;
-  border: none;
-  color: #333;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 0;
+const Tag = styled.span`
+  background-color: #f0f0f0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
   font-size: 0.875rem;
-  
-  &:hover {
-    text-decoration: underline;
-  }
+  color: #666;
 `;
 
-const Blog = () => {
-  const blogPosts = [
-    {
-      id: 1,
-      title: "The Power of Data Visualization in Business Decision Making",
-      excerpt: "Learn how effective data visualization can transform raw data into actionable insights for business growth.",
-      category: "Data Analysis",
-      date: "March 15, 2024",
-      readTime: "5 min read",
-      image: "https://via.placeholder.com/400x200"
-    },
-    {
-      id: 2,
-      title: "Best Practices for Agile Project Management",
-      excerpt: "Discover the key principles and practices that make agile project management successful in modern organizations.",
-      category: "Project Management",
-      date: "March 10, 2024",
-      readTime: "7 min read",
-      image: "https://via.placeholder.com/400x200"
-    },
-    {
-      id: 3,
-      title: "User-Centered Design: A Comprehensive Guide",
-      excerpt: "Explore the fundamentals of user-centered design and how it can improve your product development process.",
-      category: "UX Design",
-      date: "March 5, 2024",
-      readTime: "6 min read",
-      image: "https://via.placeholder.com/400x200"
-    }
-  ];
+const Blog = ({ onBlogPostClick }) => {
+  const posts = Object.entries(blogData).map(([id, post]) => ({
+    id,
+    ...post
+  }));
 
   return (
     <BlogContainer>
@@ -139,26 +99,23 @@ const Blog = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.8 }}
       >
-        {blogPosts.map((post) => (
+        {posts.map((post) => (
           <BlogCard
             key={post.id}
             whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 300 }}
+            onClick={() => onBlogPostClick(post.id)}
           >
             <BlogImage style={{ backgroundImage: `url(${post.image})` }} />
             <BlogContent>
-              <BlogCategory>{post.category}</BlogCategory>
               <BlogTitle>{post.title}</BlogTitle>
-              <BlogExcerpt>{post.excerpt}</BlogExcerpt>
-              <BlogMeta>
-                <span>{post.date} • {post.readTime}</span>
-                <ReadMore
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  Read More →
-                </ReadMore>
-              </BlogMeta>
+              <BlogMeta>{post.date} • {post.author}</BlogMeta>
+              <BlogSummary>{post.summary}</BlogSummary>
+              <TagsContainer>
+                {post.tags.map((tag, index) => (
+                  <Tag key={index}>{tag}</Tag>
+                ))}
+              </TagsContainer>
             </BlogContent>
           </BlogCard>
         ))}
