@@ -97,6 +97,8 @@ const ProjectMeta = styled.div`
   align-items: center;
   margin-top: auto;
   padding-top: 1rem;
+  font-size: 0.875rem;
+  color: #666;
 `;
 
 const ReadMoreButton = styled.button`
