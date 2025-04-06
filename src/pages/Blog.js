@@ -83,8 +83,7 @@ const BlogMeta = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #888;
-  font-size: 0.875rem;
+  margin-bottom: 1rem;
 `;
 
 const BlogDate = styled.span`
@@ -98,30 +97,15 @@ const BlogAuthor = styled.span`
 const ReadMoreButton = styled.button`
   background: none;
   border: none;
-  color: #007bff;
-  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   opacity: ${props => props.disabled ? 0.5 : 1};
   padding: 0;
-  margin-top: 1rem;
-  position: relative;
+  font-size: 0.875rem;
   
-  &:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background-color: #007bff;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-  }
-  
-  &:hover:after {
-    transform: ${props => props.disabled ? 'none' : 'scaleX(1)'};
-    transform-origin: left;
+  &:hover {
+    text-decoration: ${props => props.disabled ? 'none' : 'underline'};
   }
 `;
 
@@ -150,21 +134,20 @@ const Blog = ({ onBlogPostClick }) => {
           <BlogCard
             key={post.id}
             disabled={post.id === 3}
-            onClick={() => !post.disabled && onBlogPostClick(post.id)}
+            onClick={() => post.id !== 3 && onBlogPostClick(post.id)}
             whileHover={{ scale: post.id === 3 ? 1 : 1.02 }}
             whileTap={{ scale: post.id === 3 ? 1 : 0.98 }}
           >
             <BlogImage style={{ backgroundImage: `url(${post.image})` }} />
             <BlogContent>
               <BlogMeta>
-                <BlogDate>{post.date}</BlogDate>
-                <BlogAuthor>{post.author}</BlogAuthor>
+                <span>{post.date} • {post.author}</span>
+                <ReadMoreButton disabled={post.id === 3}>
+                  Read More →
+                </ReadMoreButton>
               </BlogMeta>
               <BlogTitle>{post.title}</BlogTitle>
-              <BlogExcerpt>{post.summary}</BlogExcerpt>
-              <ReadMoreButton disabled={post.id === 3}>
-                Read More
-              </ReadMoreButton>
+              <BlogExcerpt>{post.excerpt}</BlogExcerpt>
             </BlogContent>
           </BlogCard>
         ))}
