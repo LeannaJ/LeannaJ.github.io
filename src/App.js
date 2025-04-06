@@ -5,141 +5,104 @@ import Home from './pages/Home';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import Resume from './pages/Resume';
-import Blog from './pages/Blog';
-import BlogDetail from './pages/BlogDetail';
 
 const AppContainer = styled.div`
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  background: #f5f5f5;
 `;
 
-const Nav = styled.nav`
+const Navigation = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   background: white;
-  padding: 1rem 2rem;
+  padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 `;
 
 const NavList = styled.ul`
-  list-style: none;
   display: flex;
+  justify-content: center;
   gap: 2rem;
+  list-style: none;
   margin: 0;
   padding: 0;
 `;
 
 const NavItem = styled.li`
   cursor: pointer;
-  color: #333;
-  font-weight: ${props => props.active ? 'bold' : 'normal'};
+  color: ${props => props.active ? '#007bff' : '#333'};
+  font-weight: ${props => props.active ? '600' : '400'};
   
   &:hover {
-    color: #666;
+    color: #007bff;
   }
+`;
+
+const Content = styled.main`
+  padding-top: 4rem;
 `;
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedProjectId, setSelectedProjectId] = useState(null);
-  const [selectedBlogId, setSelectedBlogId] = useState(null);
+
+  const navigateToHome = () => {
+    setCurrentPage('home');
+    setSelectedProjectId(null);
+  };
 
   const navigateToProjects = () => {
     setCurrentPage('projects');
     setSelectedProjectId(null);
-    setSelectedBlogId(null);
   };
 
-  const navigateToProjectDetail = (id) => {
-    setCurrentPage('projects');
-    setSelectedProjectId(id);
-    setSelectedBlogId(null);
-  };
-
-  const navigateToBlogPost = (id) => {
-    setCurrentPage('blog');
-    setSelectedBlogId(id);
+  const navigateToResume = () => {
+    setCurrentPage('resume');
     setSelectedProjectId(null);
   };
 
+  const navigateToProjectDetail = (projectId) => {
+    setSelectedProjectId(projectId);
+  };
+
   const renderContent = () => {
-    if (selectedProjectId !== null) {
-      return <ProjectDetail 
-        id={selectedProjectId} 
-        onBack={() => setSelectedProjectId(null)} 
-      />;
-    }
-
-    if (selectedBlogId !== null) {
-      return <BlogDetail 
-        id={selectedBlogId} 
-        onBack={() => setSelectedBlogId(null)} 
-      />;
-    }
-
     switch (currentPage) {
       case 'home':
-        return <Home 
-          onNavigateToProjects={navigateToProjects}
-          onNavigateToProjectDetail={navigateToProjectDetail}
-        />;
+        return <Home />;
       case 'projects':
-        return <Projects onProjectClick={(id) => setSelectedProjectId(id)} />;
-      case 'blog':
-        return <Blog onBlogPostClick={(id) => setSelectedBlogId(id)} />;
+        return selectedProjectId ? (
+          <ProjectDetail projectId={selectedProjectId} />
+        ) : (
+          <Projects onProjectClick={navigateToProjectDetail} />
+        );
       case 'resume':
         return <Resume />;
       default:
         return <Home />;
     }
-  }
+  };
 
   return (
     <AppContainer>
-      <Nav>
+      <Navigation>
         <NavList>
-          <NavItem 
-            active={currentPage === 'home'} 
-            onClick={() => {
-              setCurrentPage('home');
-              setSelectedProjectId(null);
-              setSelectedBlogId(null);
-            }}
-          >
+          <NavItem active={currentPage === 'home'} onClick={navigateToHome}>
             Home
           </NavItem>
-          <NavItem 
-            active={currentPage === 'projects'} 
-            onClick={() => {
-              setCurrentPage('projects');
-              setSelectedProjectId(null);
-              setSelectedBlogId(null);
-            }}
-          >
+          <NavItem active={currentPage === 'projects'} onClick={navigateToProjects}>
             Projects
           </NavItem>
-          <NavItem 
-            active={currentPage === 'blog'} 
-            onClick={() => {
-              setCurrentPage('blog');
-              setSelectedProjectId(null);
-              setSelectedBlogId(null);
-            }}
-          >
-            Blog
-          </NavItem>
-          <NavItem 
-            active={currentPage === 'resume'} 
-            onClick={() => {
-              setCurrentPage('resume');
-              setSelectedProjectId(null);
-              setSelectedBlogId(null);
-            }}
-          >
+          <NavItem active={currentPage === 'resume'} onClick={navigateToResume}>
             Resume
           </NavItem>
         </NavList>
-      </Nav>
-      {renderContent()}
+      </Navigation>
+      <Content>
+        {renderContent()}
+      </Content>
     </AppContainer>
   );
 }
