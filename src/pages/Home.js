@@ -96,11 +96,11 @@ const Home = ({ onNavigateToProjects, onNavigateToProjectDetail }) => {
         <Title>Leanna Jeon</Title>
         <Subtitle>Problem Solver with Data and AI</Subtitle>
         <Description>
-        A product-minded data scientist with a strong foundation in predictive modeling, optimization, and user behavior analysis.
-        
-        Leveraging over a year of experience as a product management intern, I bridge product vision and data insights. 
-        I'm a fast learner with a proven ability to quickly understand new domains, build effective models,
-        and deliver actionable insights that support data-driven strategy and product growth.
+          A product-minded data scientist with a strong foundation in predictive modeling, optimization, and user behavior analysis.
+          Leveraging over a year of experience as a product management intern, I bridge product vision and data insights. 
+          <br /><br />
+          I'm a fast learner with a proven ability to quickly understand new domains, build effective models,
+          and deliver actionable insights that support data-driven strategy and product growth.
         </Description>
       </HeroSection>
 

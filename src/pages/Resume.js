@@ -242,6 +242,25 @@ const Resume = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
+        <SectionTitle>Education</SectionTitle>
+        <ExperienceItem>
+          <ExperienceTitle>Master in Science in Business Analytics & Information Technology</ExperienceTitle>
+          <ExperienceCompany>Purdue University</ExperienceCompany>
+          <ExperienceDate>2024 Aug - 2025 Aug</ExperienceDate>
+        </ExperienceItem>
+
+        <ExperienceItem>
+          <ExperienceTitle>Bachelor in Business Administration</ExperienceTitle>
+          <ExperienceCompany>Sogang University</ExperienceCompany>
+          <ExperienceDate>2015 - 2022</ExperienceDate>
+        </ExperienceItem>
+      </Section>
+
+      <Section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+      >
         <SectionTitle>Skills</SectionTitle>
         <SkillsGrid>
           <SkillCategory>
@@ -281,7 +300,7 @@ const Resume = () => {
       <Section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
       >
         <SectionTitle>Contact</SectionTitle>
         <ContactInfo>
