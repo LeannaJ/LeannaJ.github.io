@@ -83,7 +83,7 @@ const Projects = ({ onProjectClick }) => {
       title: "Balancing Trailer Pool Network",
       description: "Interactive dashboard for business analytics using Python and React",
       image: "/images/logistics_van.jpg",
-      tags: ["Python", "Streamlit", "folium", "Data Visualization", "Optimization"],
+      tags: ["Python", "Logistics Strategy", "Optimization", "folium", "ortools", "Visualization"],
       github: "https://github.com/yourusername/project1"
     },
     {
@@ -91,7 +91,7 @@ const Projects = ({ onProjectClick }) => {
       title: "ML Model for Image Processing",
       description: "Image processing and object detection using CNN and transfer learning",
       image: "/images/image_processing_g_fix.jpg",
-      tags: ["Python", "CNN", "Keras", "TensorFlow", "Transfer Learning", "Image Processing", "Object Detection"],
+      tags: ["Python", "Image Processing", "CNN", "Keras", "TensorFlow", "Transfer Learning"],
       github: "https://github.com/yourusername/project3"
     },
     {
@@ -99,14 +99,14 @@ const Projects = ({ onProjectClick }) => {
       title: "ML Model for Prediction with Sports Data",
       description: "Predictive modeling for bracket prediction in NCAA March Madness",
       image: "/images/sports_bracket.jpg",
-      tags: ["Python", "Tableau", "XGBoost", "Ensemble", "Prediction", "Data Visualization"],
+      tags: ["Python", "Sports Analytics", "Prediction", "Tableau", "Visualization"],
     },
     {
       id: 4,
       title: "AI Agent of Automated Data Analysis(Ongoing)",
       description: "Data analysis automation with LLM and RAG",
       image: "/images/AI_fix.jpg",
-      tags: ["Cursor", "Python", "Langchain", "LLM", "RAG", "Hugging Face"],
+      tags: ["AI", "LLM", "RAG", "Cursor", "Python", "LangChain", "LangSmith", "Hugging Face"],
       github: "https://github.com/yourusername/project2"
     },
     {
@@ -114,7 +114,7 @@ const Projects = ({ onProjectClick }) => {
       title: "Data Dashboard for Business Analytics(Ongoing)",
       description: "Interactive dashboard for business analytics using Python and React",
       image: "/images/Dashboard1_fix.jpg",
-      tags: ["Python", "React", "Data Visualization", "Streamlit", "Tableau", "SQL"],
+      tags: ["Python", "React", "Visualization", "Dashboard", "Streamlit", "Tableau", "SQL"],
       github: "https://github.com/yourusername/project1"
     },
     {
@@ -122,7 +122,7 @@ const Projects = ({ onProjectClick }) => {
       title: "Product Management Framework(Ongoing)",
       description: "Product design and strategic work for a mobile application",
       image: "/images/App_UX_1_fix.jpg",
-      tags: ["Figma", "Framer", "UX", "UI", "Wireframing", "Prototyping", "User Research", "Agile", "Jira"],
+      tags: ["Figma", "Framer", "UX", "UI", "Wireframing", "Prototyping", "User Research"],
     }
   ];
 

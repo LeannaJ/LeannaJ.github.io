@@ -8,7 +8,7 @@ const projectsData = {
     title: "Balancing Trailer Pool Network",
     description: "Collaborative analytics project optimizing trailer distribution strategy for logistics efficiency",
     image: "/images/logistics_van.jpg",
-    tags: ["Data Science", "Logistics Strategy", "Python", "Optimization", "folium", "ortools", "Data Visualization"],
+    tags: ["Python", "Logistics Strategy", "Optimization", "folium", "ortools", "Visualization"],
   
     overview: "Led a graduate-level consulting project addressing a key logistics challenge: how to balance trailer availability across a national network under fluctuating demand. Poor trailer positioning often results in high operational costs and low service levels—this project focused on solving that inefficiency using data-driven decision-making.",
 
@@ -38,7 +38,7 @@ const projectsData = {
     title: "ML Model for Image Processing",
     description: "Image processing and object detection using CNN and transfer learning",
     image: "/images/image_processing_g_fix.jpg",
-    tags: ["Python", "CNN", "Keras", "TensorFlow", "Transfer Learning", "Image Processing", "Object Detection"],
+    tags: ["Python", "Image Processing", "CNN", "Keras", "TensorFlow", "Transfer Learning"],
     
     overview: "This project aimed to predict the popularity of pet profile images (Pawpularity Score) based on 9,912 images and structured metadata provided in a CSV file. To accomplish this, we conducted image preprocessing, extracted visual features using a pretrained CNN (ResNet-50), and integrated those with binary metadata features (e.g., focus, blur, accessories) to build a robust regression model.",
     
@@ -65,7 +65,7 @@ const projectsData = {
     title: "ML Model for Prediction with Sports Data",
     description: "Predictive modeling for bracket prediction in NCAA March Madness",
     image: "/images/sports_bracket.jpg",
-    tags: ["Python", "Tableau", "XGBoost", "Ensemble", "Prediction", "Data Visualization"],
+    tags: ["Python", "Sports Analytics", "Prediction", "Tableau", "Visualization"],
     
     overview: "This project aimed to predict the NCAA semifinal and champion winners based on user-submitted brackets and to analyze whether school affiliation influences bracket decisions. We leveraged machine learning models and data visualization to uncover meaningful patterns behind user predictions.",
     
@@ -93,7 +93,7 @@ const projectsData = {
     title: "AI Agent of Automated Data Analysis(Ongoing)",
     description: "Data analysis automation with LLM and RAG",
     image: "/images/AI_fix.jpg",
-    tags: ["Cursor", "Python", "Langchain", "LLM", "RAG", "Hugging Face"],
+    tags: ["AI", "LLM", "RAG", "Cursor", "Python", "LangChain", "LangSmith", "Hugging Face"],
     
     overview: "This project aims to augment the end-to-end workflow of a data analyst using AI and prompt engineering. Leveraging Cursor's AI agent capabilities, we designed a modular, prompt-driven framework that separates rule-based tasks from human judgment, enabling an efficient and human-centered approach to data analysis.",
     
@@ -121,7 +121,7 @@ const projectsData = {
     title: "Data Dashboard for Business Analytics(Ongoing)",
     description: "Interactive dashboard for business analytics using Python and React",
     image: "/images/Dashboard1_fix.jpg",
-    tags: ["Python", "React", "Data Visualization", "Streamlit", "Tableau", "SQL"],
+    tags: ["Python", "React", "Visualization", "Dashboard", "Streamlit", "Tableau", "SQL"],
     
     overview: "Detailed overview of project 5...",
     
@@ -143,7 +143,7 @@ const projectsData = {
     title: "Product Management Framework(Ongoing)",
     description: "Product design and strategic work for a mobile application",
     image: "/images/App_UX_1_fix.jpg",
-    tags: ["Figma", "Framer", "UX", "UI", "Wireframing", "Prototyping", "User Research", "Agile", "Jira"],
+    tags: ["Figma", "Framer", "UX", "UI", "Wireframing", "Prototyping", "User Research"],
     
     overview: "Detailed overview of project 6...",
     
@@ -248,19 +248,19 @@ const DeliverablesList = styled.div`
 `;
 
 const DeliverableItem = styled(motion.a)`
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  margin: 0.5rem;
-  background: #f5f5f5;
+  padding: 0.75rem;
+  background: #f8f8f8;
   border-radius: 5px;
-  text-decoration: none;
   color: #333;
-  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  cursor: ${props => props.type === 'text' ? 'default' : 'pointer'};
   
   &:hover {
-    background: #e0e0e0;
+    background: #f0f0f0;
   }
 `;
 
@@ -276,10 +276,13 @@ const ProjectDetail = ({ id, onBack }) => {
   const deliverables = {
     "1": [
       { type: 'pdf', label: 'INFORMS 2025 Poster', url: '/Files/Final Poster.pdf' },
-      { type: 'html', label: 'Demo Map', url: '/Files/map_anonymized.html' }
+      { type: 'html', label: 'Demo Map(Synthetic Data)', url: '/Files/map_anonymized.html' }
     ],
     "2": [
       { type: 'github', label: 'GitHub Repository', url: 'https://github.com/LeannaJ/image_processing' }
+    ],
+    "3": [
+      { type: 'text', label: 'Project Summary', content: "Due to confidentiality, only a high-level summary is presented here. I'm happy to share more about my approach and contribution upon request." }
     ],
     "4": [
       { type: 'github', label: 'GitHub Repository', url: 'https://github.com/LeannaJ/DA_Framework' },
@@ -378,12 +381,29 @@ const ProjectDetail = ({ id, onBack }) => {
               {deliverables[id].map((deliverable, index) => (
                 <DeliverableItem
                   key={index}
-                  onClick={() => handleDeliverableClick(deliverable)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  type={deliverable.type}
+                  href={deliverable.type === 'text' ? undefined : deliverable.url}
+                  target={deliverable.type === 'text' ? undefined : "_blank"}
+                  rel={deliverable.type === 'text' ? undefined : "noopener noreferrer"}
+                  whileHover={deliverable.type === 'text' ? {} : { scale: 1.02 }}
+                  whileTap={deliverable.type === 'text' ? {} : { scale: 0.98 }}
                 >
-                  <DeliverableIcon>{getDeliverableIcon(deliverable.type)}</DeliverableIcon>
-                  {deliverable.label}
+                  {deliverable.type === 'github' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                  )}
+                  {deliverable.type === 'pdf' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
+                    </svg>
+                  )}
+                  {deliverable.type === 'html' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                  )}
+                  {deliverable.type === 'text' ? deliverable.content : deliverable.label}
                 </DeliverableItem>
               ))}
             </div>

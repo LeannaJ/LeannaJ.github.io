@@ -96,9 +96,11 @@ const Home = ({ onNavigateToProjects, onNavigateToProjectDetail }) => {
         <Title>Leanna Jeon</Title>
         <Subtitle>Problem Solver with Data and AI</Subtitle>
         <Description>
-          A quick learner with a proven ability to rapidly acquire new skills and deliver results
-          by understanding complex data, leveraging it to drive strategic decisions, and
-          proactively managing large datasets across various roles and industries.
+        A product-minded data scientist with a strong foundation in predictive modeling, optimization, and user behavior analysis.
+        
+        Leveraging over a year of experience as a product management intern, I bridge product vision and data insights. 
+        I'm a fast learner with a proven ability to quickly understand new domains, build effective models,
+        and deliver actionable insights that support data-driven strategy and product growth.
         </Description>
       </HeroSection>
 
@@ -112,7 +114,7 @@ const Home = ({ onNavigateToProjects, onNavigateToProjectDetail }) => {
           transition={{ type: "spring", stiffness: 300 }}
           onClick={() => handleCardClick('ai')}
         >
-          <SkillTitle>AI & Data Projects</SkillTitle>
+          <SkillTitle>ML & Analytics Projects</SkillTitle>
           <SkillList>
             <SkillItem>Data Visualization</SkillItem>
             <SkillItem>Predictive Modeling</SkillItem>
@@ -128,13 +130,14 @@ const Home = ({ onNavigateToProjects, onNavigateToProjectDetail }) => {
           transition={{ type: "spring", stiffness: 300 }}
           onClick={() => handleCardClick('product')}
         >
-          <SkillTitle>Product Management Frameworks</SkillTitle>
+          <SkillTitle>Product Design Thinking</SkillTitle>
           <SkillList>
-            <SkillItem>Product Design</SkillItem>
-            <SkillItem>Product User Research</SkillItem>
-            <SkillItem>Agile Methodologies</SkillItem>
+            <SkillItem>User Journey Mapping</SkillItem>
+            <SkillItem>Wireframing with Figma</SkillItem>
+            <SkillItem>Prototyping with Framer</SkillItem>
+            <SkillItem>User Funnel Analysis</SkillItem>
             <SkillItem>Scrum with Jira</SkillItem>
-            <SkillItem>Project Planning</SkillItem>
+            <SkillItem>Agile Methodologies </SkillItem>
           </SkillList>
         </SkillCard>
       </SkillsSection>
