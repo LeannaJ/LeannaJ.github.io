@@ -275,8 +275,8 @@ const ProjectDetail = ({ id, onBack }) => {
   // 프로젝트별 실제 deliverables 정의
   const deliverables = {
     "1": [
-      { type: 'pdf', label: 'INFORMS 2025 Poster', url: '/Files/Final Poster.pdf' },
-      { type: 'html', label: 'Demo Map(Synthetic Data)', url: '/Files/map_anonymized.html' }
+      { type: 'pdf', label: 'INFORMS Analytics+ Conference 2025 Poster, Accepted', url: '/Files/Final Poster.pdf' },
+      { type: 'html', label: 'Interactive Demo Map (Synthetic Data)', url: '/Files/map_anonymized.html' }
     ],
     "2": [
       { type: 'github', label: 'GitHub Repository', url: 'https://github.com/LeannaJ/image_processing' }

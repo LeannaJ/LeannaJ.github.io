@@ -195,7 +195,7 @@ const Resume = () => {
       >
         <SectionTitle>Work Experience</SectionTitle>
         <ExperienceItem>
-          <ExperienceTitle>Graduate Student Data Analyst</ExperienceTitle>
+          <ExperienceTitle>Data Analyst(Industry Practicum)</ExperienceTitle>
           <ExperienceCompany>US Logistics Company</ExperienceCompany>
           <ExperienceDate>Jan 2025 - Apr 2025</ExperienceDate>
           <ExperienceDescription>
