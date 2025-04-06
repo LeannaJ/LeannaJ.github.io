@@ -53,9 +53,6 @@ const ProjectImage = styled.div`
 
 const ProjectContent = styled.div`
   padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
 `;
 
 const ProjectTitle = styled.h3`
@@ -95,8 +92,6 @@ const ProjectMeta = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
-  padding-top: 1rem;
   font-size: 0.875rem;
   color: #666;
 `;
@@ -108,6 +103,8 @@ const ReadMoreButton = styled.button`
   font: inherit;
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   outline: inherit;
+  padding: 0;
+  margin: 0;
 `;
 
 const Projects = ({ onProjectClick }) => {
@@ -188,7 +185,7 @@ const Projects = ({ onProjectClick }) => {
             whileHover={project.id !== 5 ? { scale: 1.03 } : {}}
             transition={{ type: "spring", stiffness: 300 }}
             onClick={() => handleProjectClick(project)}
-            clickable={project.id !== 5}
+            disabled={project.id === 5}
           >
             <ProjectImage style={{ backgroundImage: `url(${project.image})` }} />
             <ProjectContent>
