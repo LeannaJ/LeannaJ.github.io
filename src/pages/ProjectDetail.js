@@ -140,26 +140,26 @@ const projectsData = {
     results: "The results and impact of project 5..."
   },
   "6": {
-    title: "Product Management Framework(Ongoing)",
-    description: "Product design and strategic work for a mobile application",
+    title: "Product Management Framework",
+    description: "Product design and strategic work for mobile applications in tech and telecom industries",
     image: "/images/App_UX_1_fix.jpg",
-    tags: ["Figma", "Framer", "UX", "UI", "Wireframing", "Prototyping", "User Research"],
-    
-    overview: "Detailed overview of project 6...",
-    
+    tags: ["Figma", "Framer", "UX", "UI", "Wireframing", "Prototyping", "User Research", "A/B Testing", "Product Strategy"],
+
+    overview: "This project showcases a series of product planning and UX design initiatives led during internships at WHITEBREW, Naver Cloud, and LG Uplus. It covers the complete product lifecycle from user research and ideation to wireframing, prototyping, and strategy development, reflecting a product-minded approach grounded in data and user empathy.",
+
     challenges: [
-      "Challenge 1 description",
-      "Challenge 2 description",
-      "Challenge 3 description"
+      "Identifying pain points in a chat-based collaboration tool's interface with unclear home navigation.",
+      "Designing product features for a new market (e-book translation service) without prior user data or demand validation.",
+      "Improving product discoverability and digital service usage in a complex telecommunications website structure."
     ],
-   
+
     solutions: [
-      "Solution 1 description",
-      "Solution 2 description",
-      "Solution 3 description"
+      "Conducted qualitative interviews with 10 users and created user journeys to uncover usability issues in the chat service, leading to a redesigned card-based dashboard UX and subsequent A/B testing.",
+      "Strategized MVP direction through competitive analysis and conducted A/B testing with landing pages, accelerating product validation and reducing development cycles by 30%.",
+      "Led restructuring of web/mobile IA and navigation design using usage analytics and behavior tracking, improving digital sign-up rates and reducing customer friction."
     ],
-   
-    results: "The results and impact of project 6..."
+
+    results: "These projects enhanced user retention, engagement, and satisfaction across mobile and web platforms. Efforts led to a 20% increase in digital platform usage, a 30% faster MVP development cycle, and a 10% improvement in service sign-ups. This experience solidified my product design thinking mindset—where empathy, clarity, and data come together to create better digital experiences."
   }
 };
 
@@ -287,6 +287,9 @@ const ProjectDetail = ({ id, onBack }) => {
     "4": [
       { type: 'github', label: 'GitHub Repository', url: 'https://github.com/LeannaJ/DA_Framework' },
       { type: 'pdf', label: 'Project Presentation', url: '/Files/1_Workflow_Slides.pdf' }
+    ],
+    "6": [
+      { type: 'text', label: 'Project Summary', content: "Designs are complete and currently being prepared for upload. The mock-up will be added soon." }
     ]
   };
 

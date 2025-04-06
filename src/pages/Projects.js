@@ -29,13 +29,18 @@ const ProjectsGrid = styled(motion.div)`
   }
 `;
 
-const ProjectCard = styled(motion.div)`
+const ProjectCard = styled(motion.article)`
   background: white;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: ${props => props.clickable ? 'pointer' : 'default'};
-  opacity: ${props => props.clickable ? 1 : 0.8};
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  opacity: ${props => props.disabled ? 0.7 : 1};
+  
+  &:hover {
+    transform: ${props => props.disabled ? 'none' : 'translateY(-5px)'};
+    box-shadow: ${props => props.disabled ? '0 4px 6px rgba(0, 0, 0, 0.1)' : '0 6px 12px rgba(0, 0, 0, 0.15)'};
+  }
 `;
 
 const ProjectImage = styled.div`
@@ -74,6 +79,29 @@ const Tag = styled.span`
   border-radius: 15px;
   font-size: 0.875rem;
   color: #666;
+`;
+
+const ProjectExcerpt = styled.p`
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+`;
+
+const ProjectMeta = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #666;
+`;
+
+const ReadMoreButton = styled.button`
+  background: none;
+  border: none;
+  color: ${props => props.disabled ? '#ccc' : '#333'};
+  font: inherit;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  outline: inherit;
 `;
 
 const Projects = ({ onProjectClick }) => {
@@ -127,7 +155,7 @@ const Projects = ({ onProjectClick }) => {
   ];
 
   const handleProjectClick = (project) => {
-    if (project.id === 5 || project.id === 6) {
+    if (project.id === 5) {
       return;
     }
     onProjectClick(project.id);
@@ -151,10 +179,10 @@ const Projects = ({ onProjectClick }) => {
         {projects.map((project) => (
           <ProjectCard
             key={project.id}
-            whileHover={project.id !== 5 && project.id !== 6 ? { scale: 1.03 } : {}}
+            whileHover={project.id !== 5 ? { scale: 1.03 } : {}}
             transition={{ type: "spring", stiffness: 300 }}
             onClick={() => handleProjectClick(project)}
-            clickable={project.id !== 5 && project.id !== 6}
+            clickable={project.id !== 5}
           >
             <ProjectImage style={{ backgroundImage: `url(${project.image})` }} />
             <ProjectContent>
@@ -165,6 +193,13 @@ const Projects = ({ onProjectClick }) => {
                   <Tag key={index}>{tag}</Tag>
                 ))}
               </ProjectTags>
+              <ProjectExcerpt>{project.excerpt}</ProjectExcerpt>
+              <ProjectMeta>
+                <span>{project.date} • {project.role}</span>
+                <ReadMoreButton disabled={project.id === 5}>
+                  Read More →
+                </ReadMoreButton>
+              </ProjectMeta>
             </ProjectContent>
           </ProjectCard>
         ))}
