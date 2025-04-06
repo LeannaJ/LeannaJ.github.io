@@ -8,101 +8,105 @@ import Resume from './pages/Resume';
 
 const AppContainer = styled.div`
   min-height: 100vh;
-  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
 `;
 
-const Navigation = styled.nav`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+const Nav = styled.nav`
   background: white;
-  padding: 1rem;
+  padding: 1rem 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
 `;
 
 const NavList = styled.ul`
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
   list-style: none;
+  display: flex;
+  gap: 2rem;
   margin: 0;
   padding: 0;
 `;
 
 const NavItem = styled.li`
   cursor: pointer;
-  color: ${props => props.active ? '#007bff' : '#333'};
-  font-weight: ${props => props.active ? '600' : '400'};
+  color: #333;
+  font-weight: ${props => props.active ? 'bold' : 'normal'};
   
   &:hover {
-    color: #007bff;
+    color: #666;
   }
-`;
-
-const Content = styled.main`
-  padding-top: 4rem;
 `;
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedProjectId, setSelectedProjectId] = useState(null);
 
-  const navigateToHome = () => {
-    setCurrentPage('home');
-    setSelectedProjectId(null);
-  };
-
   const navigateToProjects = () => {
     setCurrentPage('projects');
     setSelectedProjectId(null);
   };
 
-  const navigateToResume = () => {
-    setCurrentPage('resume');
-    setSelectedProjectId(null);
-  };
-
-  const navigateToProjectDetail = (projectId) => {
-    setSelectedProjectId(projectId);
+  const navigateToProjectDetail = (id) => {
+    setCurrentPage('projects');
+    setSelectedProjectId(id);
   };
 
   const renderContent = () => {
+    if (selectedProjectId !== null) {
+      return <ProjectDetail 
+        id={selectedProjectId} 
+        onBack={() => setSelectedProjectId(null)} 
+      />;
+    }
+
     switch (currentPage) {
       case 'home':
-        return <Home />;
+        return <Home 
+          onNavigateToProjects={navigateToProjects}
+          onNavigateToProjectDetail={navigateToProjectDetail}
+        />;
       case 'projects':
-        return selectedProjectId ? (
-          <ProjectDetail projectId={selectedProjectId} />
-        ) : (
-          <Projects onProjectClick={navigateToProjectDetail} />
-        );
+        return <Projects onProjectClick={(id) => setSelectedProjectId(id)} />;
       case 'resume':
         return <Resume />;
       default:
         return <Home />;
     }
-  };
+  }
 
   return (
     <AppContainer>
-      <Navigation>
+      <Nav>
         <NavList>
-          <NavItem active={currentPage === 'home'} onClick={navigateToHome}>
+          <NavItem 
+            active={currentPage === 'home'} 
+            onClick={() => {
+              setCurrentPage('home');
+              setSelectedProjectId(null);
+            }}
+          >
             Home
           </NavItem>
-          <NavItem active={currentPage === 'projects'} onClick={navigateToProjects}>
+          <NavItem 
+            active={currentPage === 'projects'} 
+            onClick={() => {
+              setCurrentPage('projects');
+              setSelectedProjectId(null);
+            }}
+          >
             Projects
           </NavItem>
-          <NavItem active={currentPage === 'resume'} onClick={navigateToResume}>
+          <NavItem 
+            active={currentPage === 'resume'} 
+            onClick={() => {
+              setCurrentPage('resume');
+              setSelectedProjectId(null);
+            }}
+          >
             Resume
           </NavItem>
         </NavList>
-      </Navigation>
-      <Content>
-        {renderContent()}
-      </Content>
+      </Nav>
+      {renderContent()}
     </AppContainer>
   );
 }
