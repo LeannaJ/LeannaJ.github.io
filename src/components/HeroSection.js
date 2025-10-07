@@ -20,7 +20,7 @@ const NameSection = styled.div`
   text-align: center;
   margin-bottom: 2rem;
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 10rem;
 `;
 
 const Name = styled(motion.h1)`
@@ -77,7 +77,7 @@ const VennDiagram = styled.div`
   justify-content: center;
   gap: 1rem;
   flex-wrap: nowrap;
-  margin-top: 6rem;
+  margin-top: 1rem;
   margin-bottom: 0rem;
   width: 100%;
   
@@ -92,7 +92,7 @@ const LinksBox = styled.div`
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
-  margin-top: 12rem;
+  margin-top: 6rem;
   margin-bottom: 2rem;
   
   @media (max-width: 768px) {
