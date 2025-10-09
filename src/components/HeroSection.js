@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const HeroContainer = styled.div`
   height: 100vh;
   width: 100%;
-  background: #FAF7F2;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,13 +24,13 @@ const NameSection = styled.div`
 `;
 
 const Name = styled(motion.h1)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 4rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 7rem;
   font-weight: 400;
   color: #333333;
   margin: 0;
-  letter-spacing: 0.7em;
-  line-height: 0.8;
+  letter-spacing: 0.03em;
+  line-height: 1;
   text-transform: uppercase;
   
   .highlight-bg {
@@ -52,9 +52,9 @@ const Name = styled(motion.h1)`
 `;
 
 const Subtitle = styled(motion.p)`
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 200;
+  font-family: 'Jeju Myeongjo', serif;
+  font-size: 1.3rem;
+  font-weight: 100;
   color: #555555;
   margin-top: 2rem;
   text-align: center;
@@ -71,18 +71,92 @@ const Subtitle = styled(motion.p)`
   }
 `;
 
-const VennDiagram = styled.div`
+const BoxContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: nowrap;
+  flex-direction: column;
+  gap: 1.5rem;
   margin-top: 1rem;
-  margin-bottom: 0rem;
-  width: 100%;
+  margin-bottom: 4rem;
+  align-items: center;
   
   @media (max-width: 768px) {
-    gap: -2rem;
+    gap: 1rem;
+  }
+`;
+
+const Box = styled.div`
+  width: 500px;
+  height: 80px;
+  background: #ffffff;
+  border: 1.5px solid #888888;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  
+  @media (max-width: 768px) {
+    width: 320px;
+    height: 80px;
+    padding: 0 1.5rem;
+  }
+`;
+
+const AIMLBox = styled(Box)`
+  &:hover {
+    background: #B6C93E;
+    border-color: #B6C93E;
+    
+    div {
+      color: #ffffff;
+    }
+    
+    svg {
+      stroke: #ffffff;
+    }
+  }
+`;
+
+const DataBox = styled(Box)`
+  &:hover {
+    background: #FF4126;
+    border-color: #FF4126;
+    
+    div {
+      color: #ffffff;
+    }
+    
+    svg {
+      stroke: #ffffff;
+    }
+  }
+`;
+
+const BoxText = styled.div`
+  font-family: 'Jeju Myeongjo', serif;
+  font-size: 1.5rem;
+  font-weight: 100;
+  color: #555555;
+  transition: color 0.3s ease;
+  
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
+`;
+
+const Arrow = styled.svg`
+  width: 40px;
+  height: 40px;
+  stroke: #555555;
+  flex-shrink: 0;
+  transition: stroke 0.3s ease;
+  
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
   }
 `;
 
@@ -92,7 +166,7 @@ const LinksBox = styled.div`
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
-  margin-top: 6rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
   
   @media (max-width: 768px) {
@@ -104,7 +178,7 @@ const IconButton = styled.a`
   width: 47px;
   height: 47px;
   border-radius: 50%;
-  border: 2px solid #333;
+  border: 1.5px solid #888888;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,7 +213,7 @@ const ResumeButton = styled.a`
   align-items: center;
   gap: 0.5rem;
   padding: 0.8rem 1.5rem;
-  border: 2px solid #FF4126;
+  border: 1.5px solid #FF4126;
   border-radius: 30px;
   text-decoration: none;
   color: #FF4126;
@@ -151,7 +225,7 @@ const ResumeButton = styled.a`
   
   &:hover {
     background: #FF4126;
-    color: #FAF7F2;
+    color: #ffffff;
   }
   
   svg {
@@ -166,83 +240,6 @@ const ResumeButton = styled.a`
 `;
 
 
-const PlusSign = styled(motion.div)`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 5rem;
-  font-weight: 500;
-  color: #FF4126;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
-`;
-
-const Circle = styled(motion.div)`
-  width: 270px;
-  height: 270px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #333333;
-  text-align: center;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  text-decoration: none;
-  
-  @media (max-width: 768px) {
-    width: 160px;
-    height: 160px;
-    font-size: 1rem;
-  }
-  
-  @media (max-width: 480px) {
-    width: 140px;
-    height: 140px;
-    font-size: 0.9rem;
-  }
-`;
-
-const AICircle = styled(Circle)`
-  background: #B6C93E;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  
-  &:hover {
-    box-shadow: 0 0 20px rgba(143, 155, 61, 0.7);
-    transform: translateY(-2px);
-  }
-`;
-
-const DataCircle = styled(Circle)`
-  background: #FF4126;
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  
-  &:hover {
-    box-shadow: 0 0 20px rgba(207, 80, 64, 0.7);
-    transform: translateY(-2px);
-  }
-`;
-
-const ProductCircle = styled(Circle)`
-  background: #D3ECF7;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  
-  &:hover {
-    box-shadow: 0 0 20px rgba(155, 172, 180, 0.7);
-    transform: translateY(-2px);
-  }
-`;
-
 const HeroSection = () => {
   return (
     <HeroContainer>
@@ -255,27 +252,23 @@ const HeroSection = () => {
         </Subtitle>
       </NameSection>
       
-      <VennDiagram>
-        <AICircle as="a" href="https://leannajeon.vercel.app" target="_blank" rel="noopener noreferrer">
-          AI/ML
-        </AICircle>
+      <BoxContainer>
+        <AIMLBox as="a" href="https://leannajeon-aiml.vercel.app" target="_blank" rel="noopener noreferrer">
+          <BoxText>AI/ML Projects</BoxText>
+          <Arrow viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </Arrow>
+        </AIMLBox>
         
-        <PlusSign>
-          +
-        </PlusSign>
-        
-        <DataCircle as="a" href="https://your-data-page.vercel.app" target="_blank" rel="noopener noreferrer">
-          Data
-        </DataCircle>
-        
-        <PlusSign>
-          +
-        </PlusSign>
-        
-        <ProductCircle as="a" href="https://your-product-page.vercel.app" target="_blank" rel="noopener noreferrer">
-          Product
-        </ProductCircle>
-      </VennDiagram>
+        <DataBox as="a" href="https://leannajeon-data.vercel.app" target="_blank" rel="noopener noreferrer">
+          <BoxText>Data Analytics</BoxText>
+          <Arrow viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </Arrow>
+        </DataBox>
+      </BoxContainer>
       
       <LinksBox>
         <IconButton href="mailto:leannajeon13@gmail.com" aria-label="Email">

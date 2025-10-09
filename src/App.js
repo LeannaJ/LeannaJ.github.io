@@ -4,7 +4,7 @@ import HeroSection from './components/HeroSection';
 
 const AppContainer = styled.div`
   height: 100vh;
-  background: #FAF7F2;
+  background: #ffffff;
   padding: 0;
   overflow: hidden;
   display: flex;
