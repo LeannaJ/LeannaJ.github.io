@@ -25,7 +25,7 @@ const NameSection = styled.div`
 
 const Name = styled(motion.h1)`
   font-family: 'Inter', sans-serif;
-  font-size: 7rem;
+  font-size: 6rem;
   font-weight: 400;
   color: #333333;
   margin: 0;
@@ -53,7 +53,7 @@ const Name = styled(motion.h1)`
 
 const Subtitle = styled(motion.p)`
   font-family: 'Jeju Myeongjo', serif;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 100;
   color: #555555;
   margin-top: 2rem;
